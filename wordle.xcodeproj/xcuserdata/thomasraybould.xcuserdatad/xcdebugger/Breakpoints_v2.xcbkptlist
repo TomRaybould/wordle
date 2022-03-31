@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E6C255BB-20B2-4F5F-A672-C0BE7010022C"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wordle/WordleCollectionView/LetterCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "LetterCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 62a9ffc342849a3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.letterValue.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 71dc73c2ca00ce7e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.letterValue.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 8e7cc43c285cdd35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.letterValue.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 9e7aa67a1e5ce86e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.letterValue.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 1cab6c3b20fc96ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.init(frame: __C.CGRect) -&gt; wordle.LetterCell"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "8D379AD5-D0D1-45FA-81D9-95917EEE5DDE - 92e987cf85e55f17"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.LetterCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;wordle.LetterCell&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/WordleCollectionView/LetterCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A4F517FF-DC43-437C-BD76-93A0D0C343C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wordle/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2"
+            endingLineNumber = "2"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
