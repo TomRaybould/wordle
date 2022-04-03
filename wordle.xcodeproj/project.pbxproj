@@ -17,6 +17,7 @@
 		1148B18C27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148B18B27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift */; };
 		1148B1A327F53708000CECD9 /* LetterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148B19B27F4E46B000CECD9 /* LetterCell.swift */; };
 		1148B1A727F53AB5000CECD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148B1A627F53AB5000CECD9 /* Main.storyboard */; };
+		11C2672227FA39AD002A6395 /* WordleMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1148B18B27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1148B19B27F4E46B000CECD9 /* LetterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCell.swift; sourceTree = "<group>"; };
 		1148B1A627F53AB5000CECD9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleMainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		1148B16727F3CE77000CECD9 /* wordle */ = {
 			isa = PBXGroup;
 			children = (
+				11C2672027FA3983002A6395 /* viewModel */,
 				1148B1A627F53AB5000CECD9 /* Main.storyboard */,
 				1148B19B27F4E46B000CECD9 /* LetterCell.swift */,
 				1148B16827F3CE77000CECD9 /* AppDelegate.swift */,
@@ -128,6 +131,14 @@
 				1148B18B27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift */,
 			);
 			path = wordleUITests;
+			sourceTree = "<group>";
+		};
+		11C2672027FA3983002A6395 /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */,
+			);
+			path = viewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +276,7 @@
 				1148B16927F3CE77000CECD9 /* AppDelegate.swift in Sources */,
 				1148B16B27F3CE77000CECD9 /* SceneDelegate.swift in Sources */,
 				1148B1A327F53708000CECD9 /* LetterCell.swift in Sources */,
+				11C2672227FA39AD002A6395 /* WordleMainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

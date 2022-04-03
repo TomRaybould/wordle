@@ -9,38 +9,35 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var testData:[Character] = Array()
+    var wordleMainViewModel = WordleMainViewModel()
+    
+    var wordleCollectionViewCharArray:[Character] = Array()
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wordleMainViewModel.setDelegate(wordleMainViewDelegate: self)
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
         textInput.delegate = self
         textInput.placeholder = "Guess a word..."
     }
  
-    func updateData(newString: String){
-        for char in newString{
-            testData.append(char)
-        }
-        wordleCollectionView.reloadData()
-    }
 }
 
 extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return testData.count
+        return wordleCollectionViewCharArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
         
         cell.backgroundColor = UIColor.darkGray
-        cell.letterValue.text = String(testData[indexPath.row])
+        cell.letterValue.text = String(wordleCollectionViewCharArray[indexPath.row])
         
         return cell
     }
@@ -64,17 +61,27 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
 
 extension ViewController : UITextFieldDelegate{
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            
-        if let text = textField.text?.uppercased(), text.count == 5{
-            print(text)
-            updateData(newString: text)
-            textField.text = ""
-        }
-        
+        wordleMainViewModel.onWordEntered(newWord: textField.text)
+        textField.text = ""
         return false
     }
     
+}
 
+extension ViewController : WordleMainViewDelegate{
+    
+    func showError(errorString: String) {
+        print(errorString)
+    }
+    
+    func updateCollectionView(collectionViewArray: [Character]) {
+        wordleCollectionViewCharArray = collectionViewArray
+        wordleCollectionView.reloadData()
+    }
+    
+    func displayTargetWord(targetWord: String) {
+        print(targetWord)
+    }
+    
 }
