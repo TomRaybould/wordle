@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController {
     
     let testData = Array(0...4)
     
@@ -22,6 +22,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         textInput.delegate = self
     }
     
+}
+
+extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return testData.count
@@ -50,7 +53,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return CGSize(width: 0, height: 0)
         }
     }
-        
     
 }
 
@@ -62,8 +64,6 @@ extension ViewController : UITextFieldDelegate{
         if let text = textField.text{
             print(text)
         }
-        
-        
         
         return false
     }
