@@ -85,6 +85,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="textInput" destination="8O4-2h-7z4" id="LIt-Vu-JgR"/>
                         <outlet property="wordleCollectionView" destination="vQ9-fE-9bG" id="aWu-1L-Ys0"/>
                     </connections>
                 </viewController>

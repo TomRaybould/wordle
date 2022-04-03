@@ -11,6 +11,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     let testData = Array(0...4)
     
+    @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -18,6 +19,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("viewDidLoad")
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
+        textInput.delegate = self
     }
     
     
@@ -52,3 +54,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
 }
 
+extension ViewController : UITextFieldDelegate{
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            
+        if let text = textField.text{
+            print(text)
+        }
+        
+        
+        
+        return false
+    }
+}
