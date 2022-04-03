@@ -19,6 +19,7 @@
 		1148B1A727F53AB5000CECD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148B1A627F53AB5000CECD9 /* Main.storyboard */; };
 		11C2672227FA39AD002A6395 /* WordleMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */; };
 		11C2672527FA4426002A6395 /* WordleCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2672427FA4426002A6395 /* WordleCollectionViewItem.swift */; };
+		11C2672727FA4EAC002A6395 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2672627FA4EAC002A6395 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1148B1A627F53AB5000CECD9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleMainViewModel.swift; sourceTree = "<group>"; };
 		11C2672427FA4426002A6395 /* WordleCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleCollectionViewItem.swift; sourceTree = "<group>"; };
+		11C2672627FA4EAC002A6395 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				1148B17127F3CE7C000CECD9 /* Assets.xcassets */,
 				1148B17327F3CE7C000CECD9 /* LaunchScreen.storyboard */,
 				1148B17627F3CE7C000CECD9 /* Info.plist */,
+				11C2672627FA4EAC002A6395 /* Colors.xcassets */,
 			);
 			path = wordle;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1148B17527F3CE7C000CECD9 /* LaunchScreen.storyboard in Resources */,
+				11C2672727FA4EAC002A6395 /* Colors.xcassets in Resources */,
 				1148B17227F3CE7C000CECD9 /* Assets.xcassets in Resources */,
 				1148B1A727F53AB5000CECD9 /* Main.storyboard in Resources */,
 			);

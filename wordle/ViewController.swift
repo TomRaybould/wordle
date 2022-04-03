@@ -38,18 +38,18 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
         
         let item = wordleCollectionViewCharArray[indexPath.row]
         
-        let backgroundColor: UIColor = {
+        let backgroundColor: UIColor? = {
             switch item.state {
             case WordleCollectionItemState.rightPosition:
-                return UIColor.green
+                return UIColor(named: "CorrectPositionColor")
             case WordleCollectionItemState.wrongPosition:
-                return UIColor.yellow
+                return UIColor(named: "WrongPositionColor")
             default:
-                return UIColor.gray
+                return UIColor(named: "NotInWordColor")
             }
         }()
         
-        cell.backgroundColor = backgroundColor
+        cell.backgroundColor = backgroundColor ?? UIColor.darkGray
         cell.letterValue.text = item.letterValue
         
         return cell
