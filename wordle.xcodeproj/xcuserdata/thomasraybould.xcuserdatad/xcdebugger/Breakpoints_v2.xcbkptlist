@@ -128,5 +128,129 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wordle/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - 1c2c3db5c4d183c7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.wordleCollectionView.getter : Swift.Optional&lt;__C.UICollectionView&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - d290c660dcbfb3f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.wordleCollectionView.setter : Swift.Optional&lt;__C.UICollectionView&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - d71501caa70437c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.wordleCollectionView.modify : Swift.Optional&lt;__C.UICollectionView&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - ca8bf2f49c7bc7d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.wordleCollectionView.modify : Swift.Optional&lt;__C.UICollectionView&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - 3b4f408483ea66d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; wordle.ViewController"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "3BEF65F2-6815-491E-BC40-1489E4E9127D - 854cba43c97a2159"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wordle.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;wordle.ViewController&gt;"
+                  moduleName = "wordle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/thomasraybould/programming/wordle/wordle/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B6977DD-5249-4C71-A36F-8ACCB4281C32"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wordle/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
