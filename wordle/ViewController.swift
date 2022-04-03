@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     
     var wordleMainViewModel = WordleMainViewModel()
     
-    var wordleCollectionViewCharArray:[Character] = Array()
+    var wordleCollectionViewCharArray:[WordleCollectionViewItem] = Array()
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
@@ -36,8 +36,21 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
         
-        cell.backgroundColor = UIColor.darkGray
-        cell.letterValue.text = String(wordleCollectionViewCharArray[indexPath.row])
+        let item = wordleCollectionViewCharArray[indexPath.row]
+        
+        let backgroundColor: UIColor = {
+            switch item.state {
+            case WordleCollectionItemState.rightPosition:
+                return UIColor.green
+            case WordleCollectionItemState.wrongPosition:
+                return UIColor.yellow
+            default:
+                return UIColor.gray
+            }
+        }()
+        
+        cell.backgroundColor = backgroundColor
+        cell.letterValue.text = item.letterValue
         
         return cell
     }
@@ -75,7 +88,7 @@ extension ViewController : WordleMainViewDelegate{
         print(errorString)
     }
     
-    func updateCollectionView(collectionViewArray: [Character]) {
+    func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {
         wordleCollectionViewCharArray = collectionViewArray
         wordleCollectionView.reloadData()
     }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol WordleMainViewDelegate{
     func displayTargetWord(targetWord: String)
-    func updateCollectionView(collectionViewArray: [Character])
+    func updateCollectionView(collectionViewArray: [WordleCollectionViewItem])
     func showError(errorString: String)
 }
 
@@ -19,7 +19,7 @@ class WordleMainViewModel{
     
     //todo: remove hardcoded target word
     let targetWord = "WORDS"
-    var collectionViewCharArray: [Character] = Array()
+    var collectionViewCharArray: [WordleCollectionViewItem] = Array()
     
     func setDelegate(wordleMainViewDelegate: WordleMainViewDelegate){
         self.wordleMainViewDelegate = wordleMainViewDelegate
@@ -36,9 +36,21 @@ class WordleMainViewModel{
     }
     
     private func addNewWordToList(newWord: String){
-        for char in newWord{
-            collectionViewCharArray.append(char)
+        for (index, char) in newWord.enumerated() {
+            
+            let state: WordleCollectionItemState
+            if(char == targetWord[targetWord.index(targetWord.startIndex, offsetBy: index)]){
+                state = WordleCollectionItemState.rightPosition
+            }else if(targetWord.contains(char)){
+                state = WordleCollectionItemState.wrongPosition
+            } else {
+                state = WordleCollectionItemState.notInWord
+            }
+            
+            let item = WordleCollectionViewItem(letterValue: String(char), state: state)
+            collectionViewCharArray.append(item)
         }
+    
         
         self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: collectionViewCharArray)
     }
