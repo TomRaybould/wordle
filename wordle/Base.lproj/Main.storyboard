@@ -28,12 +28,29 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="letterCell" id="maS-ki-0Eb" customClass="LetterCell" customModule="wordle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lgv-Lk-qxl">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="62" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bw-Ht-TnO">
+                                                    <rect key="frame" x="10" y="10" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4bw-Ht-TnO" firstAttribute="leading" secondItem="lgv-Lk-qxl" secondAttribute="leading" constant="10" id="Lwc-Zr-UcF"/>
+                                                <constraint firstAttribute="trailing" secondItem="4bw-Ht-TnO" secondAttribute="trailing" constant="10" id="OUq-o7-wK1"/>
+                                                <constraint firstItem="4bw-Ht-TnO" firstAttribute="top" secondItem="lgv-Lk-qxl" secondAttribute="top" constant="10" id="aSA-nU-SUC"/>
+                                                <constraint firstAttribute="bottom" secondItem="4bw-Ht-TnO" secondAttribute="bottom" constant="10" id="iUE-5L-YI8"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="letterValue" destination="4bw-Ht-TnO" id="4JJ-A6-gBt"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -53,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-670" y="39"/>
+            <point key="canvasLocation" x="-671.01449275362324" y="38.839285714285715"/>
         </scene>
     </scenes>
     <resources>

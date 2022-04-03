@@ -10,5 +10,6 @@ import UIKit
 
 class LetterCell: UICollectionViewCell{
 
+    @IBOutlet weak var letterValue: UILabel!
     
 }

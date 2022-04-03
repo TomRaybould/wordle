@@ -17,7 +17,6 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
         print("viewDidLoad")
         wordleCollectionView.dataSource = self
-        
     }
     
     
@@ -27,11 +26,10 @@ class ViewController: UIViewController, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
         
-        
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
+        cell.backgroundColor = UIColor.cyan
+        cell.letterValue.text = String(testData[indexPath.row])
         
         return cell
     }
