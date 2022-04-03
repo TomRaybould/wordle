@@ -9,19 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let testData = Array(0...4)
+    var testData:[Character] = Array()
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
         textInput.delegate = self
+        textInput.placeholder = "Guess a word..."
     }
-    
+ 
+    func updateData(newString: String){
+        for char in newString{
+            testData.append(char)
+        }
+        wordleCollectionView.reloadData()
+    }
 }
 
 extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -61,10 +67,14 @@ extension ViewController : UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             
-        if let text = textField.text{
+        if let text = textField.text?.uppercased(), text.count == 5{
             print(text)
+            updateData(newString: text)
+            textField.text = ""
         }
         
         return false
     }
+    
+
 }
