@@ -18,7 +18,7 @@ class WordleMainViewModel{
     var wordleMainViewDelegate: WordleMainViewDelegate?
     
     //todo: remove hardcoded target word
-    let targetWord = "WORDS"
+    var targetWord = WordList.getWordList().randomElement()!.uppercased()
     var collectionViewCharArray: [WordleCollectionViewItem] = Array()
     
     func setDelegate(wordleMainViewDelegate: WordleMainViewDelegate){
@@ -36,6 +36,7 @@ class WordleMainViewModel{
     }
     
     private func addNewWordToList(newWord: String){
+        print(targetWord)
         for (index, char) in newWord.enumerated() {
             
             let state: WordleCollectionItemState

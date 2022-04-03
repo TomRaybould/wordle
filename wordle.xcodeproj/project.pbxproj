@@ -17,6 +17,7 @@
 		1148B18C27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148B18B27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift */; };
 		1148B1A327F53708000CECD9 /* LetterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1148B19B27F4E46B000CECD9 /* LetterCell.swift */; };
 		1148B1A727F53AB5000CECD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148B1A627F53AB5000CECD9 /* Main.storyboard */; };
+		116E02B227FA5B4200218782 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116E02B127FA5B4200218782 /* WordList.swift */; };
 		11C2672227FA39AD002A6395 /* WordleMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */; };
 		11C2672527FA4426002A6395 /* WordleCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C2672427FA4426002A6395 /* WordleCollectionViewItem.swift */; };
 		11C2672727FA4EAC002A6395 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11C2672627FA4EAC002A6395 /* Colors.xcassets */; };
@@ -54,6 +55,7 @@
 		1148B18B27F3CE7C000CECD9 /* wordleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wordleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1148B19B27F4E46B000CECD9 /* LetterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCell.swift; sourceTree = "<group>"; };
 		1148B1A627F53AB5000CECD9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		116E02B127FA5B4200218782 /* WordList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 		11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleMainViewModel.swift; sourceTree = "<group>"; };
 		11C2672427FA4426002A6395 /* WordleCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleCollectionViewItem.swift; sourceTree = "<group>"; };
 		11C2672627FA4EAC002A6395 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				11C2672127FA39AD002A6395 /* WordleMainViewModel.swift */,
+				116E02B127FA5B4200218782 /* WordList.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11C2672527FA4426002A6395 /* WordleCollectionViewItem.swift in Sources */,
+				116E02B227FA5B4200218782 /* WordList.swift in Sources */,
 				1148B16D27F3CE77000CECD9 /* ViewController.swift in Sources */,
 				1148B16927F3CE77000CECD9 /* AppDelegate.swift in Sources */,
 				1148B16B27F3CE77000CECD9 /* SceneDelegate.swift in Sources */,
