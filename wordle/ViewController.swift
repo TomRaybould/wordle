@@ -95,7 +95,16 @@ extension ViewController : UITextFieldDelegate{
 extension ViewController : WordleMainViewDelegate{
     
     func showError(errorString: String) {
-        print(errorString)
+        let alert = UIAlertController(title: nil, message: errorString, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 16
+    
+        self.present(alert, animated: true)
+    
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            alert.dismiss(animated: true)
+        })
     }
     
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {
