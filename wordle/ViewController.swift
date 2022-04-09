@@ -44,10 +44,20 @@ extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFl
                 return UIColor(named: "CorrectPositionColor")
             case WordleCollectionItemState.wrongPosition:
                 return UIColor(named: "WrongPositionColor")
-            default:
+            case WordleCollectionItemState.notInWord:
                 return UIColor(named: "NotInWordColor")
+            default:
+                return UIColor.systemBackground
             }
         }()
+        
+        
+        if(item.state == WordleCollectionItemState.empty){
+            cell.layer.borderWidth = 3
+            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+        }else{
+            cell.layer.borderWidth = 0
+        }
         
         cell.backgroundColor = backgroundColor ?? UIColor.darkGray
         cell.letterValue.text = item.letterValue

@@ -15,17 +15,30 @@ protocol WordleMainViewDelegate{
 
 class WordleMainViewModel{
     
-    var wordleMainViewDelegate: WordleMainViewDelegate?
-    
-    //todo: remove hardcoded target word
-    var targetWord = WordList.getWordList().randomElement()!.uppercased()
-    var collectionViewCharArray: [WordleCollectionViewItem] = Array()
+    private var wordleMainViewDelegate: WordleMainViewDelegate?
+    private var targetWord = WordList.getWordList().randomElement()!.uppercased()
+    private var collectionViewItemArray: [[WordleCollectionViewItem]] = Array()
+    private var wordsEnteredCount = 0
+
     
     func setDelegate(wordleMainViewDelegate: WordleMainViewDelegate){
         self.wordleMainViewDelegate = wordleMainViewDelegate
-        self.wordleMainViewDelegate?.displayTargetWord(targetWord: targetWord)
+        initGame()
     }
 
+    func initGame(){
+        wordsEnteredCount = 0
+        targetWord = WordList.getWordList().randomElement()!.uppercased()
+        
+        //init with 30 empty cells 6 rows 5 cols
+        collectionViewItemArray = (0...5).map ({row in
+            (0...4).map({col in WordleCollectionViewItem.emptyLetterItem()})
+        })
+    
+        self.wordleMainViewDelegate?.displayTargetWord(targetWord: targetWord)
+        updateWordleCollectionViewData()
+    }
+    
     func onWordEntered(newWord: String?){
         if let text = newWord?.uppercased(), text.count == 5{
             addNewWordToList(newWord: text)
@@ -37,6 +50,9 @@ class WordleMainViewModel{
     
     private func addNewWordToList(newWord: String){
         print(targetWord)
+        
+        var newWordLetterItemsArray: [WordleCollectionViewItem] = Array()
+        
         for (index, char) in newWord.enumerated() {
             
             let state: WordleCollectionItemState
@@ -48,12 +64,17 @@ class WordleMainViewModel{
                 state = WordleCollectionItemState.notInWord
             }
             
-            let item = WordleCollectionViewItem(letterValue: String(char), state: state)
-            collectionViewCharArray.append(item)
+            let item = WordleCollectionViewItem.getLetterItem(letterValue: String(char), state: state)
+            newWordLetterItemsArray.append(item)
         }
-    
         
-        self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: collectionViewCharArray)
+        collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray
+        wordsEnteredCount+=1
+        updateWordleCollectionViewData()
     }
     
+    private func updateWordleCollectionViewData(){
+        let flattenD2Array = collectionViewItemArray.flatMap({$0})
+        self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: flattenD2Array)
+    }
 }

@@ -10,12 +10,20 @@ import UIKit
 
 class WordleCollectionViewItem {
     
-    let letterValue: String
+    let letterValue: String?
     let state: WordleCollectionItemState
     
-    init(letterValue: String, state: WordleCollectionItemState){
+    private init(letterValue: String, state: WordleCollectionItemState){
         self.letterValue = letterValue
         self.state = state
+    }
+    
+    static func getLetterItem(letterValue: String, state: WordleCollectionItemState) -> WordleCollectionViewItem{
+        return WordleCollectionViewItem(letterValue: letterValue, state: state)
+    }
+    
+    static func emptyLetterItem() -> WordleCollectionViewItem{
+        return getLetterItem(letterValue: "", state: WordleCollectionItemState.empty)
     }
     
 }
@@ -24,4 +32,5 @@ enum WordleCollectionItemState{
     case rightPosition
     case wrongPosition
     case notInWord
+    case empty
 }
