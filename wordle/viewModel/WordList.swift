@@ -8,9 +8,12 @@
 import Foundation
 
 class WordList{
-
+    
     static func getWordList() -> [String] {
-        return [
+        return wordList
+    }
+    
+    static let wordList = [
     "aback",
     "abase",
     "abate",
@@ -2326,6 +2329,6 @@ class WordList{
     "zebra",
     "zesty",
     "zonal"]
-    }
+
     
 }

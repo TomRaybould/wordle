@@ -49,7 +49,11 @@ class WordleMainViewModel{
     }
     
     private func addNewWordToList(newWord: String){
-        print(targetWord)
+    
+        if(!WordList.getWordList().contains(newWord.uppercased())){
+            self.wordleMainViewDelegate?.showError(errorString: "Word not in list")
+            return
+        }
         
         var newWordLetterItemsArray: [WordleCollectionViewItem] = Array()
         
