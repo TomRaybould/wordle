@@ -16,7 +16,7 @@ protocol WordleMainViewDelegate{
 class WordleMainViewModel{
     
     private var wordleMainViewDelegate: WordleMainViewDelegate?
-    private var targetWord = WordList.getWordList().randomElement()!.uppercased()
+    private var targetWord = WordList.getSolutionWordList().randomElement()!.uppercased()
     private var collectionViewItemArray: [[WordleCollectionViewItem]] = Array()
     private var wordsEnteredCount = 0
 
@@ -28,7 +28,7 @@ class WordleMainViewModel{
 
     func initGame(){
         wordsEnteredCount = 0
-        targetWord = WordList.getWordList().randomElement()!.uppercased()
+        targetWord = WordList.getSolutionWordList().randomElement()!.uppercased()
         
         //init with 30 empty cells 6 rows 5 cols
         collectionViewItemArray = (0...5).map ({row in
@@ -50,7 +50,7 @@ class WordleMainViewModel{
     
     private func addNewWordToList(newWord: String){
     
-        if(!WordList.getWordList().contains(newWord.uppercased())){
+        if(!WordList.getValidGeussWordList().contains(newWord.uppercased())){
             self.wordleMainViewDelegate?.showError(errorString: "Word not in list")
             return
         }
