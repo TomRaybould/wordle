@@ -13,22 +13,28 @@ protocol WordleMainViewDelegate{
     func showError(errorString: String)
 }
 
+protocol WordListProvider {
+    func getSolutionWordList() -> [String]
+    func getValidGeussWordList() -> [String]
+}
+
 class WordleMainViewModel{
     
-    private var wordleMainViewDelegate: WordleMainViewDelegate?
-    private var targetWord = WordList.getSolutionWordList().randomElement()!.uppercased()
+    private var wordleMainViewDelegate: WordleMainViewDelegate!
+    private var wordListProvider: WordListProvider!
+    private var targetWord: String = ""
     private var collectionViewItemArray: [[WordleCollectionViewItem]] = Array()
     private var wordsEnteredCount = 0
 
     
-    func setDelegate(wordleMainViewDelegate: WordleMainViewDelegate){
+    init(wordleMainViewDelegate: WordleMainViewDelegate, wordListProvider: WordListProvider){
+        self.wordListProvider = wordListProvider
         self.wordleMainViewDelegate = wordleMainViewDelegate
-        initGame()
-    }
+    }    
 
     func initGame(){
         wordsEnteredCount = 0
-        targetWord = WordList.getSolutionWordList().randomElement()!.uppercased()
+        targetWord = wordListProvider.getSolutionWordList().randomElement()!.uppercased()
         
         //init with 30 empty cells 6 rows 5 cols
         collectionViewItemArray = (0...5).map ({row in
@@ -49,27 +55,42 @@ class WordleMainViewModel{
     }
     
     private func addNewWordToList(newWord: String){
-    
-        if(!WordList.getValidGeussWordList().contains(newWord.uppercased())){
+        if(!wordListProvider.getValidGeussWordList().contains(newWord.uppercased())){
             self.wordleMainViewDelegate?.showError(errorString: "Word not in list")
             return
         }
         
-        var newWordLetterItemsArray: [WordleCollectionViewItem] = Array()
+        var targetStringArray: [String?] = Array(repeating: nil, count: 5)
+        var newWordLetterItemsArray: [WordleCollectionViewItem] = Array(repeating: WordleCollectionViewItem.emptyLetterItem(), count: 5)
         
+        for (index, char) in targetWord.enumerated() {
+            targetStringArray[index] = String(char)
+        }
+    
+        //filter out right position
         for (index, char) in newWord.enumerated() {
+            let guessedChar = String(char)
             
-            let state: WordleCollectionItemState
-            if(char == targetWord[targetWord.index(targetWord.startIndex, offsetBy: index)]){
-                state = WordleCollectionItemState.rightPosition
-            }else if(targetWord.contains(char)){
-                state = WordleCollectionItemState.wrongPosition
-            } else {
-                state = WordleCollectionItemState.notInWord
+            if(guessedChar == targetStringArray[index]){
+                let item = WordleCollectionViewItem.getLetterItem(letterValue: guessedChar, state: WordleCollectionItemState.rightPosition)
+                newWordLetterItemsArray[index] = item
+                targetStringArray[index] = nil
             }
-            
-            let item = WordleCollectionViewItem.getLetterItem(letterValue: String(char), state: state)
-            newWordLetterItemsArray.append(item)
+        }
+        
+        //check for wrongPosition else notInWord
+        for (index, char) in newWord.enumerated() {
+            if(newWordLetterItemsArray[index].state == WordleCollectionItemState.rightPosition){
+                continue
+            }
+            let guessedChar = String(char)
+            if(targetStringArray.contains(guessedChar)){
+                let item = WordleCollectionViewItem.getLetterItem(letterValue: guessedChar, state: WordleCollectionItemState.wrongPosition)
+                newWordLetterItemsArray[index] = item
+            }else{
+                let item = WordleCollectionViewItem.getLetterItem(letterValue: guessedChar, state: WordleCollectionItemState.notInWord)
+                newWordLetterItemsArray[index] = item
+            }
         }
         
         collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray

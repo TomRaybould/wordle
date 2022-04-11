@@ -7,17 +7,21 @@
 
 import Foundation
 
-class WordList{
+class WordList: WordListProvider{
     
-    static func getSolutionWordList() -> [String] {
+    static let instance = WordList()
+    
+    private init(){}
+
+    func getSolutionWordList() -> [String] {
         return wordList
     }
     
-    static func getValidGeussWordList() -> [String] {
+    func getValidGeussWordList() -> [String] {
         return validGuessList
     }
     
-    static let wordList = [
+    let wordList = [
     "ABACK",
     "ABASE",
     "ABATE",
@@ -2334,7 +2338,7 @@ class WordList{
     "ZESTY",
     "ZONAL"]
     
-    static let validGuessList = [
+    let validGuessList = [
         "WOMEN",
         "NIKAU",
         "SWACK",

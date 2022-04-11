@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var wordleMainViewModel = WordleMainViewModel()
+    var wordleMainViewModel: WordleMainViewModel!
     
     var wordleCollectionViewCharArray:[WordleCollectionViewItem] = Array()
     
@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wordleMainViewModel.setDelegate(wordleMainViewDelegate: self)
+        wordleMainViewModel = WordleMainViewModel(wordleMainViewDelegate: self, wordListProvider: WordList.instance)
+        wordleMainViewModel.initGame()
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
         textInput.delegate = self
