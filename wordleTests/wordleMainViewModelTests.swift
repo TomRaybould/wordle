@@ -36,14 +36,33 @@ class wordleMainViewModelTests: XCTestCase {
         
         let collectionItems = wordleMainViewDelegate.lastCollectionListGivenToView
             
-        print(collectionItems.map({ word in
-            word.state
-        }))
-        
         XCTAssertEqual("T", collectionItems[2].letterValue)
         XCTAssertEqual(WordleCollectionItemState.rightPosition, collectionItems[2].state)
         XCTAssertEqual("T", collectionItems[3].letterValue)
         XCTAssertEqual(WordleCollectionItemState.notInWord, collectionItems[3].state)
+    }
+    
+    func test_given_the_solution_is_SANDY_and_the_first_guessed_word_is_AMISS_then_both_only_the_first_S_should_be_the_wrong_position_state() throws{
+        
+        let wordleMainViewDelegate = wordleMainViewModelTests.getWordleMainViewDelegate()
+        let wordListProvider = wordleMainViewModelTests.getWordListProvider(validGeussWordList: ["AMISS"], solutionWordList: ["SANDY"])
+        
+        let viewModel = wordleMainViewModelTests.getViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
+        viewModel.initGame()
+        
+        //simulate user guessing AMISS
+        viewModel.onWordEntered(newWord: "AMISS")
+        
+        let collectionItems = wordleMainViewDelegate.lastCollectionListGivenToView
+            
+        print(collectionItems.map({ word in
+            word.state
+        }))
+        
+        XCTAssertEqual("S", collectionItems[3].letterValue)
+        XCTAssertEqual(WordleCollectionItemState.wrongPosition, collectionItems[3].state)
+        XCTAssertEqual("S", collectionItems[4].letterValue)
+        XCTAssertEqual(WordleCollectionItemState.notInWord, collectionItems[4].state)
     }
     
     //Setting up Mock utils for viewmodel
@@ -52,7 +71,7 @@ class wordleMainViewModelTests: XCTestCase {
         return WordleMainViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
     }
     
-    private static func getWordListProvider(validGeussWordList: [String] = ["tests"], solutionWordList: [String] = ["tests"] ) -> WordListProvider{
+    private static func getWordListProvider(validGeussWordList: [String] = ["TESTS"], solutionWordList: [String] = ["TESTS"] ) -> WordListProvider{
         class MockWordListProvider : WordListProvider {
             let validGeussWordList: [String]
             let solutionWordList: [String]

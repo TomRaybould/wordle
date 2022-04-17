@@ -80,11 +80,22 @@ class WordleMainViewModel{
         
         //check for wrongPosition else notInWord
         for (index, char) in newWord.enumerated() {
+            
             if(newWordLetterItemsArray[index].state == WordleCollectionItemState.rightPosition){
                 continue
             }
+            
             let guessedChar = String(char)
             if(targetStringArray.contains(guessedChar)){
+                /*
+                 remove the matched letter for the target array so we dont have multiple yellow tiles if the letter appear twice in the guess word
+                 but once in the target word for example: target = SANDY guess = AMISS, only the first "S" should be in the worng position
+                 */
+                let indexInTarget = targetStringArray.firstIndex(of: guessedChar)
+                if let safeIndex = indexInTarget{
+                    targetStringArray.remove(at: safeIndex)
+                }
+                
                 let item = WordleCollectionViewItem.getLetterItem(letterValue: guessedChar, state: WordleCollectionItemState.wrongPosition)
                 newWordLetterItemsArray[index] = item
             }else{
