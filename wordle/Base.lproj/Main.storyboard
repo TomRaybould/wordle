@@ -17,17 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0JI-ap-7n3">
-                                <rect key="frame" x="16" y="44" width="382" height="852"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0JI-ap-7n3">
+                                <rect key="frame" x="16" y="44" width="382" height="250"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8O4-2h-7z4">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="2fu-sk-wsA"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vQ9-fE-9bG">
-                                        <rect key="frame" x="0.0" y="54" width="382" height="798"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="50" width="382" height="200"/>
+                                        <color key="backgroundColor" red="0.6333019137" green="0.14095443490000001" blue="0.099234677849999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="V3F-tb-hKq"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RKT-TJ-xMv">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -69,8 +75,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="vQ9-fE-9bG" secondAttribute="trailing" id="6LW-B1-4Vd"/>
-                                    <constraint firstAttribute="bottom" secondItem="vQ9-fE-9bG" secondAttribute="bottom" id="Fop-1R-gXv"/>
+                                    <constraint firstAttribute="trailing" secondItem="8O4-2h-7z4" secondAttribute="trailing" id="ETe-iQ-cAH"/>
                                     <constraint firstItem="vQ9-fE-9bG" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="Pon-pk-eci"/>
+                                    <constraint firstItem="8O4-2h-7z4" firstAttribute="top" secondItem="0JI-ap-7n3" secondAttribute="top" id="g8z-HU-Mz7"/>
+                                    <constraint firstItem="8O4-2h-7z4" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="i1F-c8-reA"/>
                                     <constraint firstItem="vQ9-fE-9bG" firstAttribute="top" secondItem="8O4-2h-7z4" secondAttribute="bottom" id="xKi-JR-sNE"/>
                                 </constraints>
                             </stackView>
@@ -80,13 +88,13 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0JI-ap-7n3" secondAttribute="trailing" constant="16" id="Gha-Gs-a1f"/>
                             <constraint firstItem="0JI-ap-7n3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="V0X-qi-oYM"/>
-                            <constraint firstAttribute="bottom" secondItem="0JI-ap-7n3" secondAttribute="bottom" id="Wwj-9y-zja"/>
                             <constraint firstItem="0JI-ap-7n3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gv8-xU-rbv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="textInput" destination="8O4-2h-7z4" id="LIt-Vu-JgR"/>
                         <outlet property="wordleCollectionView" destination="vQ9-fE-9bG" id="aWu-1L-Ys0"/>
+                        <outlet property="wordleCollectionViewHeight" destination="V3F-tb-hKq" id="Yr2-Vr-RRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
