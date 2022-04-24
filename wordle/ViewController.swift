@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     var wordleCollectionViewCharArray:[WordleCollectionViewItem] = Array()
     
+    @IBOutlet weak var wordleCollectionViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     
@@ -25,6 +27,15 @@ class ViewController: UIViewController {
         textInput.delegate = self
         textInput.placeholder = "Guess a word..."
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let height = wordleCollectionView.collectionViewLayout.collectionViewContentSize.height
+        wordleCollectionViewHeight.constant = height
+        self.view.setNeedsLayout()
+    }
+    
+    
  
 }
 
@@ -111,6 +122,9 @@ extension ViewController : WordleMainViewDelegate{
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {
         wordleCollectionViewCharArray = collectionViewArray
         wordleCollectionView.reloadData()
+        wordleCollectionView.invalidateIntrinsicContentSize()
+        wordleCollectionView.setNeedsLayout()
+        wordleCollectionView.layoutIfNeeded()
     }
     
     func displayTargetWord(targetWord: String) {

@@ -89,7 +89,7 @@ class WordleMainViewModel{
             if(targetStringArray.contains(guessedChar)){
                 /*
                  remove the matched letter for the target array so we dont have multiple yellow tiles if the letter appear twice in the guess word
-                 but once in the target word for example: target = SANDY guess = AMISS, only the first "S" should be in the worng position
+                 but once in the target word for example: target = SANDY guess = AMISS, only the first "S" should be in the wrong position
                  */
                 let indexInTarget = targetStringArray.firstIndex(of: guessedChar)
                 if let safeIndex = indexInTarget{
