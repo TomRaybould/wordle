@@ -12,11 +12,14 @@ class ViewController: UIViewController {
     var wordleMainViewModel: WordleMainViewModel!
     
     var wordleCollectionViewCharArray:[WordleCollectionViewItem] = Array()
+    var wordleKeyboardArray:[WordleKeyboardItem] = Array()
     
     @IBOutlet weak var wordleCollectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
+    @IBOutlet weak var wordleKeyboardCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,10 @@ class ViewController: UIViewController {
         wordleMainViewModel.initGame()
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
+        
+        wordleKeyboardCollectionView.dataSource = self
+        wordleKeyboardCollectionView.delegate = self
+        
         textInput.delegate = self
         textInput.placeholder = "Guess a word..."
     }
@@ -39,13 +46,14 @@ class ViewController: UIViewController {
  
 }
 
-extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return wordleCollectionViewCharArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
         
         let item = wordleCollectionViewCharArray[indexPath.row]
@@ -126,6 +134,15 @@ extension ViewController : WordleMainViewDelegate{
         wordleCollectionView.setNeedsLayout()
         wordleCollectionView.layoutIfNeeded()
     }
+    
+    func updateKeyboardKey(keyboardKeys: [WordleKeyboardItem]) {
+        wordleKeyboardArray = keyboardKeys
+        wordleKeyboardCollectionView.reloadData()
+        wordleCollectionView.invalidateIntrinsicContentSize()
+        wordleCollectionView.setNeedsLayout()
+        wordleCollectionView.layoutIfNeeded()
+    }
+    
     
     func displayTargetWord(targetWord: String) {
         print(targetWord)
