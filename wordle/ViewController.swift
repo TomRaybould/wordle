@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
+    @IBOutlet weak var wordleKeyboardCollectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,10 @@ class ViewController: UIViewController {
         wordleMainViewModel.initGame()
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
+        
+        wordleKeyboardCollectionView.dataSource = self
+        wordleKeyboardCollectionView.delegate = self
+        
         textInput.delegate = self
         textInput.placeholder = "Guess a word..."
     }
@@ -39,7 +45,7 @@ class ViewController: UIViewController {
  
 }
 
-extension ViewController :UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return wordleCollectionViewCharArray.count

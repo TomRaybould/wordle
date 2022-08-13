@@ -24,6 +24,7 @@ class WordleMainViewModel{
     private var wordListProvider: WordListProvider!
     private var targetWord: String = ""
     private var collectionViewItemArray: [[WordleCollectionViewItem]] = Array()
+    private var keyboardKeysArray:[WordleKeyboardItem] = Array()
     private var wordsEnteredCount = 0
 
     
@@ -41,6 +42,8 @@ class WordleMainViewModel{
             (0...4).map({col in WordleCollectionViewItem.emptyLetterItem()})
         })
     
+        //todo init keyboard array
+        
         self.wordleMainViewDelegate?.displayTargetWord(targetWord: targetWord)
         updateWordleCollectionViewData()
     }
@@ -112,5 +115,10 @@ class WordleMainViewModel{
     private func updateWordleCollectionViewData(){
         let flattenD2Array = collectionViewItemArray.flatMap({$0})
         self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: flattenD2Array)
+    }
+    
+    func getKeyboardKeys(){
+        
+        
     }
 }

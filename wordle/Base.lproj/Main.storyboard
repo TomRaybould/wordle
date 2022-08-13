@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0JI-ap-7n3">
-                                <rect key="frame" x="16" y="44" width="382" height="750"/>
+                                <rect key="frame" x="16" y="44" width="382" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8O4-2h-7z4">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -72,25 +72,58 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWc-bv-wRU" customClass="WordleKeyboard" customModule="wordle" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="250" width="382" height="500"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="500" id="tbn-uK-Ra8"/>
-                                        </constraints>
-                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ntj-wl-kye" userLabel="Keyboard Collection View">
+                                        <rect key="frame" x="0.0" y="250" width="382" height="568"/>
+                                        <color key="backgroundColor" red="0.6333019137" green="0.14095443490000001" blue="0.099234677849999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vpy-sz-seb">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="keyboardKey" id="qsS-jg-EuI" userLabel="keyboard key" customClass="KeyboardKey" customModule="wordle" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JH6-PU-mA9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQQ-lN-6ai">
+                                                            <rect key="frame" x="8" y="35" width="112" height="57.5"/>
+                                                            <attributedString key="attributedText">
+                                                                <fragment content="Label">
+                                                                    <attributes>
+                                                                        <font key="NSFont" metaFont="system" size="48"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="qQQ-lN-6ai" firstAttribute="centerY" secondItem="JH6-PU-mA9" secondAttribute="centerY" id="1Mu-Gr-87R"/>
+                                                        <constraint firstItem="qQQ-lN-6ai" firstAttribute="centerX" secondItem="JH6-PU-mA9" secondAttribute="centerX" id="87o-NU-KwW"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="keyValue" destination="JH6-PU-mA9" id="k9t-LR-iDB"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="vQ9-fE-9bG" secondAttribute="trailing" id="6LW-B1-4Vd"/>
-                                    <constraint firstAttribute="trailing" secondItem="rWc-bv-wRU" secondAttribute="trailing" id="9pH-Sg-2ju"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ntj-wl-kye" secondAttribute="trailing" id="DXw-yf-RHd"/>
                                     <constraint firstAttribute="trailing" secondItem="8O4-2h-7z4" secondAttribute="trailing" id="ETe-iQ-cAH"/>
-                                    <constraint firstItem="rWc-bv-wRU" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="Ncv-Xm-Cht"/>
                                     <constraint firstItem="vQ9-fE-9bG" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="Pon-pk-eci"/>
-                                    <constraint firstItem="rWc-bv-wRU" firstAttribute="top" secondItem="vQ9-fE-9bG" secondAttribute="bottom" id="QFJ-EL-Nxu"/>
+                                    <constraint firstItem="Ntj-wl-kye" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="ZHp-XV-31h"/>
                                     <constraint firstItem="8O4-2h-7z4" firstAttribute="top" secondItem="0JI-ap-7n3" secondAttribute="top" id="g8z-HU-Mz7"/>
+                                    <constraint firstItem="Ntj-wl-kye" firstAttribute="top" secondItem="vQ9-fE-9bG" secondAttribute="bottom" id="ggu-1J-JUh"/>
                                     <constraint firstItem="8O4-2h-7z4" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="i1F-c8-reA"/>
-                                    <constraint firstAttribute="bottom" secondItem="rWc-bv-wRU" secondAttribute="bottom" id="nsE-im-J0Q"/>
                                     <constraint firstItem="vQ9-fE-9bG" firstAttribute="top" secondItem="8O4-2h-7z4" secondAttribute="bottom" id="xKi-JR-sNE"/>
                                 </constraints>
                             </stackView>
@@ -99,7 +132,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0JI-ap-7n3" secondAttribute="trailing" constant="16" id="Gha-Gs-a1f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0JI-ap-7n3" secondAttribute="bottom" id="Kcb-SI-QcJ"/>
                             <constraint firstItem="0JI-ap-7n3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="V0X-qi-oYM"/>
+                            <constraint firstItem="0JI-ap-7n3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dFQ-9W-IbM"/>
                             <constraint firstItem="0JI-ap-7n3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gv8-xU-rbv"/>
                         </constraints>
                     </view>
@@ -107,6 +142,7 @@
                         <outlet property="textInput" destination="8O4-2h-7z4" id="LIt-Vu-JgR"/>
                         <outlet property="wordleCollectionView" destination="vQ9-fE-9bG" id="aWu-1L-Ys0"/>
                         <outlet property="wordleCollectionViewHeight" destination="V3F-tb-hKq" id="Yr2-Vr-RRJ"/>
+                        <outlet property="wordleKeyboardCollectionView" destination="Ntj-wl-kye" id="RK9-18-6SB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
