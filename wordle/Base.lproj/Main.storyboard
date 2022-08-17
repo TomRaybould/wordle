@@ -74,7 +74,6 @@
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ntj-wl-kye" userLabel="Keyboard Collection View">
                                         <rect key="frame" x="0.0" y="250" width="382" height="568"/>
-                                        <color key="backgroundColor" red="0.6333019137" green="0.14095443490000001" blue="0.099234677849999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vpy-sz-seb">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -108,7 +107,7 @@
                                                     </constraints>
                                                 </collectionViewCellContentView>
                                                 <connections>
-                                                    <outlet property="keyValue" destination="JH6-PU-mA9" id="k9t-LR-iDB"/>
+                                                    <outlet property="keyValue" destination="qQQ-lN-6ai" id="LQS-OV-9cV"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>

@@ -9,16 +9,16 @@ import Foundation
 
 class WordleKeyboardItem {
     
-    let letterValue: String?
+    let keyValue: String?
     let state: WordleKeyboardItemState
     
-    private init(letterValue: String, state: WordleKeyboardItemState){
-        self.letterValue = letterValue
+    private init(keyValue: String, state: WordleKeyboardItemState){
+        self.keyValue = keyValue
         self.state = state
     }
     
-    static func createKeyboardItem(letterValue: String, state: WordleKeyboardItemState) -> WordleKeyboardItem{
-        return WordleKeyboardItem(letterValue: letterValue, state: state)
+    static func createKeyboardItem(keyValue: String, state: WordleKeyboardItemState) -> WordleKeyboardItem{
+        return WordleKeyboardItem(keyValue: keyValue, state: state)
     }
 
     enum WordleKeyboardItemState{

@@ -43,55 +43,68 @@ class ViewController: UIViewController {
     }
     
     
- 
+    
 }
 
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return wordleCollectionViewCharArray.count
+        if(collectionView == wordleCollectionView){
+            return wordleCollectionViewCharArray.count
+        }else {
+            return wordleKeyboardArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
-        
-        let item = wordleCollectionViewCharArray[indexPath.row]
-        
-        let backgroundColor: UIColor? = {
-            switch item.state {
-            case WordleCollectionItemState.rightPosition:
-                return UIColor(named: "CorrectPositionColor")
-            case WordleCollectionItemState.wrongPosition:
-                return UIColor(named: "WrongPositionColor")
-            case WordleCollectionItemState.notInWord:
-                return UIColor(named: "NotInWordColor")
-            default:
-                return UIColor.systemBackground
+        if(collectionView == wordleCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
+            
+            let item = wordleCollectionViewCharArray[indexPath.row]
+            
+            let backgroundColor: UIColor? = {
+                switch item.state {
+                case WordleCollectionItemState.rightPosition:
+                    return UIColor(named: "CorrectPositionColor")
+                case WordleCollectionItemState.wrongPosition:
+                    return UIColor(named: "WrongPositionColor")
+                case WordleCollectionItemState.notInWord:
+                    return UIColor(named: "NotInWordColor")
+                default:
+                    return UIColor.systemBackground
+                }
+            }()
+            
+            
+            if(item.state == WordleCollectionItemState.empty){
+                cell.layer.borderWidth = 3
+                cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+            }else{
+                cell.layer.borderWidth = 0
             }
-        }()
-        
-        
-        if(item.state == WordleCollectionItemState.empty){
-            cell.layer.borderWidth = 3
-            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+            
+            cell.backgroundColor = backgroundColor ?? UIColor.darkGray
+            cell.letterValue.text = item.letterValue
+            
+            return cell
         }else{
-            cell.layer.borderWidth = 0
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "keyboardKey", for: indexPath as IndexPath) as! KeyboardKey
+            
+            let item = wordleKeyboardArray[indexPath.row]
+            cell.keyValue.text = item.keyValue
+            
+            return cell
         }
         
-        cell.backgroundColor = backgroundColor ?? UIColor.darkGray
-        cell.letterValue.text = item.letterValue
-        
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let numberOfItemsPerRow:CGFloat = 5
         let spacingBetweenCells:CGFloat = 8
-                
+        
         let totalSpacing = ((numberOfItemsPerRow + 1) * spacingBetweenCells)
-                
+        
         if let collection = self.wordleCollectionView{
             let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
             return CGSize(width: width, height: width)
@@ -119,9 +132,9 @@ extension ViewController : WordleMainViewDelegate{
         alert.view.backgroundColor = UIColor.black
         alert.view.alpha = 0.6
         alert.view.layer.cornerRadius = 16
-    
+        
         self.present(alert, animated: true)
-    
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             alert.dismiss(animated: true)
         })
@@ -135,7 +148,7 @@ extension ViewController : WordleMainViewDelegate{
         wordleCollectionView.layoutIfNeeded()
     }
     
-    func updateKeyboardKey(keyboardKeys: [WordleKeyboardItem]) {
+    func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {
         wordleKeyboardArray = keyboardKeys
         wordleKeyboardCollectionView.reloadData()
         wordleCollectionView.invalidateIntrinsicContentSize()

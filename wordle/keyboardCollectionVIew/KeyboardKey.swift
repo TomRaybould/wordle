@@ -10,7 +10,8 @@ import UIKit
 
 class KeyboardKey: UICollectionViewCell{
 
-    @IBOutlet weak var keyValue: UIView!
+    
+    @IBOutlet weak var keyValue: UILabel!
     
     
 }
