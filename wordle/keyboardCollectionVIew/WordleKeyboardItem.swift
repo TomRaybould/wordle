@@ -25,6 +25,16 @@ class WordleKeyboardItem {
     static func createSpacer() -> WordleKeyboardItem{
         return createKeyboardItem(keyValue: "", state: WordleKeyboardItemState.spacer)
     }
+    
+    //spacer takes up half the width of a normal key
+    static func createBackspaceKey() -> WordleKeyboardItem{
+        return createKeyboardItem(keyValue: "", state: WordleKeyboardItemState.backspace)
+    }
+    
+    //spacer takes up half the width of a normal key
+    static func createEnterKey() -> WordleKeyboardItem{
+        return createKeyboardItem(keyValue: "", state: WordleKeyboardItemState.enter)
+    }
 
     enum WordleKeyboardItemState{
         case unusedLetter
@@ -32,6 +42,8 @@ class WordleKeyboardItem {
         case notInWord
         case correctPosition
         case spacer
+        case backspace
+        case enter
     }
 
 }

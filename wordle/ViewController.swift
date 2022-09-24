@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if(collectionView == wordleCollectionView){
@@ -113,7 +113,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let spacingBetweenCells:CGFloat = 10
         
         let totalSpacing = ((numberOfItemsPerRow + 1) * spacingBetweenCells)
-
+        
         
         if let collection = self.wordleCollectionView{
             let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
@@ -125,23 +125,37 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     
     func getSizeCellForKeyboardCollectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, MinimumInteritemSpacingForSectionAt indexPath: IndexPath) -> CGSize {
         
+        let collectionWidth = self.wordleKeyboardCollectionView.bounds.width
+        
         let numberOfItemsPerRow:CGFloat = 10
+        let spacingBetweenCells:CGFloat = 4
         
-        let spacingBetweenCells:CGFloat = 5
+        let totalSpacing = (numberOfItemsPerRow * spacingBetweenCells)
+        //width calculated for the top row of keys with no spacers
+        let standardKeyWidth = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         
-        let totalSpacing = ((numberOfItemsPerRow + 1) * spacingBetweenCells)
+        var itemWidth = standardKeyWidth
+        let itemHeight = standardKeyWidth + 1.25
         
-        if let collection = self.wordleKeyboardCollectionView{
-    
-            var itemWidth = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
-    
-            if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.spacer){
-                itemWidth = itemWidth * 0.5
-            }
-            return CGSize(width: itemWidth, height: itemWidth)
-        }else{
-            return CGSize(width: 0, height: 0)
+        if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.spacer){
+            //spacer items on the side of the second row of keys
+            let totalPadding = 12 * spacingBetweenCells
+            let widthOfKeys = 9 * standardKeyWidth
+            let spacerWidth = (collectionWidth - (totalPadding + widthOfKeys)) / 2
+            
+            itemWidth = spacerWidth
+        }else if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.enter ||
+                 wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.backspace){
+            
+            let totalPadding = 8 * spacingBetweenCells
+            let widthOfKeys = 7 * standardKeyWidth
+            let spacerWidth = (collectionWidth - (totalPadding + widthOfKeys)) / 2
+            
+            itemWidth = spacerWidth
         }
+        
+        return CGSize(width: itemWidth, height: itemHeight)
+        
     }
     
     

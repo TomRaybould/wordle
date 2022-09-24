@@ -154,9 +154,7 @@ class WordleMainViewModel{
         keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
         
         //line three
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
+        keyboardKeysArray.append(WordleKeyboardItem.createEnterKey())
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Z", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "X", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "C", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
@@ -164,9 +162,7 @@ class WordleMainViewModel{
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "B", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "N", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
         keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "M", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
+        keyboardKeysArray.append(WordleKeyboardItem.createBackspaceKey())
         
         wordleMainViewDelegate.updateKeyboardKeys(keyboardKeys: keyboardKeysArray)
     }
