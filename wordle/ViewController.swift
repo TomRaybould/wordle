@@ -162,8 +162,14 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(collectionView != wordleKeyboardCollectionView) {return}
+        wordleMainViewModel.onKeyPressedEntered(index: indexPath.row)
+      }
     
 }
+
+
 
 extension ViewController : UITextFieldDelegate{
     

@@ -27,6 +27,7 @@ class WordleMainViewModel{
     private var collectionViewItemArray: [[WordleCollectionViewItem]] = Array()
     private var keyboardKeysArray:[WordleKeyboardItem] = Array()
     private var wordsEnteredCount = 0
+    private var letterCount = 0
 
     
     init(wordleMainViewDelegate: WordleMainViewDelegate, wordListProvider: WordListProvider){
@@ -36,6 +37,7 @@ class WordleMainViewModel{
 
     func initGame(){
         wordsEnteredCount = 0
+        letterCount = 0
         targetWord = wordListProvider.getSolutionWordList().randomElement()!.uppercased()
         
         //init with 30 empty cells 6 rows 5 cols
@@ -56,6 +58,47 @@ class WordleMainViewModel{
             self.wordleMainViewDelegate?.showError(errorString: "Word must be 5 letters")
         }
     
+    }
+    
+    func onKeyPressedEntered(index: Int){
+        let key = keyboardKeysArray[index]
+        
+        if(key.state == WordleKeyboardItem.WordleKeyboardItemState.backspace){
+            onDeletePressed()
+            return
+        }else if(key.state == WordleKeyboardItem.WordleKeyboardItemState.enter){
+            onEnterPressed()
+            return
+        }
+        
+        if(letterCount >= 5){ return }
+        
+        collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.getLetterItem(letterValue: key.keyValue ?? "", state: WordleCollectionItemState.notInWord)
+        
+        updateWordleCollectionViewData()
+        
+        letterCount += 1
+        
+    }
+    
+    private func onDeletePressed(){
+        if(letterCount <= 0){return}
+        
+        letterCount -= 1
+        
+        collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.emptyLetterItem()
+        updateWordleCollectionViewData()
+    }
+    
+    private func onEnterPressed(){
+        var newWord = ""
+        for item in collectionViewItemArray[wordsEnteredCount] {
+            if(item.state == WordleCollectionItemState.notInWord){
+                newWord += item.letterValue ?? ""
+            }
+        }
+        print(newWord)
+        onWordEntered(newWord: newWord)
     }
     
     private func addNewWordToList(newWord: String){
@@ -109,7 +152,8 @@ class WordleMainViewModel{
         }
         
         collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray
-        wordsEnteredCount+=1
+        wordsEnteredCount += 1
+        letterCount = 0
         updateWordleCollectionViewData()
     }
     
