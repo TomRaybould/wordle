@@ -94,8 +94,12 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
             
             let item = wordleKeyboardArray[indexPath.row]
             cell.keyValue.text = item.keyValue
-            cell.layer.borderWidth = 1
-            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+            
+            if(item.state != WordleKeyboardItem.WordleKeyboardItemState.spacer){
+                cell.layer.borderWidth = 1
+                cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+                cell.layer.cornerRadius = 5.0
+            }
             
             return cell
         }
@@ -135,7 +139,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let standardKeyWidth = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         
         var itemWidth = standardKeyWidth
-        let itemHeight = standardKeyWidth + 1.25
+        let itemHeight = standardKeyWidth * 1.5
         
         if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.spacer){
             //spacer items on the side of the second row of keys

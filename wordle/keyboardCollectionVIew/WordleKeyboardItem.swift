@@ -28,12 +28,12 @@ class WordleKeyboardItem {
     
     //spacer takes up half the width of a normal key
     static func createBackspaceKey() -> WordleKeyboardItem{
-        return createKeyboardItem(keyValue: "", state: WordleKeyboardItemState.backspace)
+        return createKeyboardItem(keyValue: "Del", state: WordleKeyboardItemState.backspace)
     }
     
     //spacer takes up half the width of a normal key
     static func createEnterKey() -> WordleKeyboardItem{
-        return createKeyboardItem(keyValue: "", state: WordleKeyboardItemState.enter)
+        return createKeyboardItem(keyValue: "Enter", state: WordleKeyboardItemState.enter)
     }
 
     enum WordleKeyboardItemState{
