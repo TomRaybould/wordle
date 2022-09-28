@@ -73,8 +73,7 @@ class WordleMainViewModel{
         
         if(key.keyValue == nil || key.keyValue?.isEmpty == true || letterCount >= 5){ return }
         
-        collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.getLetterItem(letterValue: key.keyValue ?? "", state: WordleCollectionItemState.notInWord)
-        
+        collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.getNewEntryItem(letterValue: key.keyValue!)
         updateWordleCollectionViewData()
         
         letterCount += 1
@@ -93,7 +92,7 @@ class WordleMainViewModel{
     private func onEnterPressed(){
         var newWord = ""
         for item in collectionViewItemArray[wordsEnteredCount] {
-            if(item.state == WordleCollectionItemState.notInWord){
+            if(item.state == WordleCollectionItemState.newEntry){
                 newWord += item.letterValue ?? ""
             }
         }

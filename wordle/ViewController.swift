@@ -74,7 +74,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
             }()
             
             
-            if(item.state == WordleCollectionItemState.empty){
+            if(item.state == WordleCollectionItemState.empty || item.state == WordleCollectionItemState.newEntry){
                 cell.layer.borderWidth = 3
                 cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
             }else{

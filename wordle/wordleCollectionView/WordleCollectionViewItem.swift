@@ -26,9 +26,15 @@ class WordleCollectionViewItem {
         return getLetterItem(letterValue: "", state: WordleCollectionItemState.empty)
     }
     
+    static func getNewEntryItem(letterValue: String) -> WordleCollectionViewItem{
+        return getLetterItem(letterValue: letterValue, state: WordleCollectionItemState.newEntry)
+    }
+    
+    
 }
 
 enum WordleCollectionItemState{
+    case newEntry
     case rightPosition
     case wrongPosition
     case notInWord
