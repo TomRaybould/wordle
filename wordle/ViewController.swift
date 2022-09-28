@@ -101,9 +101,24 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         cell.keyValue.text = item.keyValue
         
         if(item.state != WordleKeyboardItem.WordleKeyboardItemState.spacer){
-            cell.layer.borderWidth = 1
-            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
             cell.layer.cornerRadius = 5.0
+            
+            let backgroundColor: UIColor? = {
+                switch item.state {
+                case WordleKeyboardItem.WordleKeyboardItemState.correctPosition:
+                    return UIColor(named: "CorrectPositionColor")
+                case WordleKeyboardItem.WordleKeyboardItemState.wrongPosition:
+                    return UIColor(named: "WrongPositionColor")
+                case WordleKeyboardItem.WordleKeyboardItemState.notInWord:
+                    return UIColor(named: "NotInWordColor")
+                default:
+                    return UIColor.lightGray
+                }
+            }()
+
+            cell.backgroundColor = backgroundColor ?? UIColor.darkGray
+        }else{
+            cell.backgroundColor = UIColor.systemBackground
         }
         
         return cell

@@ -154,6 +154,46 @@ class WordleMainViewModel{
         wordsEnteredCount += 1
         letterCount = 0
         updateWordleCollectionViewData()
+        updateKeyboardKeyColors()
+    }
+    
+    //updating the colors of the keys to show what letters are used in the word, and what letters are in the rigth position.
+    private func updateKeyboardKeyColors(){
+        for wordleCellItem in collectionViewItemArray.flatMap({$0}){
+            
+            let index = getKeyIndex(target: wordleCellItem.letterValue!)
+            
+            if(wordleCellItem.state == WordleCollectionItemState.notInWord){
+                
+                let key = keyboardKeysArray[index]
+                //check if this key is not also already used in the correct position
+                if(key.state != .correctPosition){
+                    keyboardKeysArray[index] = WordleKeyboardItem.createKeyboardItem(keyValue: key.keyValue ?? "", state: .notInWord)
+                }
+                
+            } else if(wordleCellItem.state == .wrongPosition){
+                
+                let key = keyboardKeysArray[index]
+                //check if this key is not also already used in the correct position
+                if(key.state != .correctPosition){
+                    keyboardKeysArray[index] = WordleKeyboardItem.createKeyboardItem(keyValue: key.keyValue ?? "", state: .wrongPosition)
+                }
+                
+            } else if(wordleCellItem.state == .rightPosition){
+                
+                let keyValue = keyboardKeysArray[index].keyValue
+                keyboardKeysArray[index] = WordleKeyboardItem.createKeyboardItem(keyValue: keyValue ?? "", state: .correctPosition)
+                
+            }
+
+        }
+
+        self.wordleMainViewDelegate?.updateKeyboardKeys(keyboardKeys: keyboardKeysArray)
+    }
+    
+    //returns the index of the key with a value equal to the target
+    private func getKeyIndex(target: String) -> Int{
+        return keyboardKeysArray.firstIndex{$0.keyValue == target } ?? -1
     }
     
     private func updateWordleCollectionViewData(){
