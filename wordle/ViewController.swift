@@ -56,50 +56,57 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         if(collectionView == wordleCollectionView){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
-            
-            let item = wordleCollectionViewCharArray[indexPath.row]
-            
-            let backgroundColor: UIColor? = {
-                switch item.state {
-                case WordleCollectionItemState.rightPosition:
-                    return UIColor(named: "CorrectPositionColor")
-                case WordleCollectionItemState.wrongPosition:
-                    return UIColor(named: "WrongPositionColor")
-                case WordleCollectionItemState.notInWord:
-                    return UIColor(named: "NotInWordColor")
-                default:
-                    return UIColor.systemBackground
-                }
-            }()
-            
-            
-            if(item.state == WordleCollectionItemState.empty || item.state == WordleCollectionItemState.newEntry){
-                cell.layer.borderWidth = 3
-                cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
-            }else{
-                cell.layer.borderWidth = 0
-            }
-            
-            cell.backgroundColor = backgroundColor ?? UIColor.darkGray
-            cell.letterValue.text = item.letterValue
-            
-            return cell
+            return dataBindWordleCell(collectionView, cellForItemAt: indexPath)
         }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "keyboardKey", for: indexPath as IndexPath) as! KeyboardKey
-            
-            let item = wordleKeyboardArray[indexPath.row]
-            cell.keyValue.text = item.keyValue
-            
-            if(item.state != WordleKeyboardItem.WordleKeyboardItemState.spacer){
-                cell.layer.borderWidth = 1
-                cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
-                cell.layer.cornerRadius = 5.0
+            return dataBindKeyboardKey(collectionView, cellForItemAt: indexPath)
+        }
+    }
+    
+    private func dataBindWordleCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "letterCell", for: indexPath as IndexPath) as! LetterCell
+        
+        let item = wordleCollectionViewCharArray[indexPath.row]
+        
+        let backgroundColor: UIColor? = {
+            switch item.state {
+            case WordleCollectionItemState.rightPosition:
+                return UIColor(named: "CorrectPositionColor")
+            case WordleCollectionItemState.wrongPosition:
+                return UIColor(named: "WrongPositionColor")
+            case WordleCollectionItemState.notInWord:
+                return UIColor(named: "NotInWordColor")
+            default:
+                return UIColor.systemBackground
             }
-            
-            return cell
+        }()
+        
+        
+        if(item.state == WordleCollectionItemState.empty || item.state == WordleCollectionItemState.newEntry){
+            cell.layer.borderWidth = 3
+            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+        }else{
+            cell.layer.borderWidth = 0
         }
         
+        cell.backgroundColor = backgroundColor ?? UIColor.darkGray
+        cell.letterValue.text = item.letterValue
+        
+        return cell
+    }
+    
+    private func dataBindKeyboardKey(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "keyboardKey", for: indexPath as IndexPath) as! KeyboardKey
+        
+        let item = wordleKeyboardArray[indexPath.row]
+        cell.keyValue.text = item.keyValue
+        
+        if(item.state != WordleKeyboardItem.WordleKeyboardItemState.spacer){
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor(named: "EmptyBorder")?.cgColor
+            cell.layer.cornerRadius = 5.0
+        }
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
