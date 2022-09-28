@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0JI-ap-7n3">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0JI-ap-7n3">
                                 <rect key="frame" x="16" y="44" width="382" height="818"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8O4-2h-7z4">
@@ -29,7 +29,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="200" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vQ9-fE-9bG">
-                                        <rect key="frame" x="0.0" y="50" width="382" height="200"/>
+                                        <rect key="frame" x="0.0" y="70" width="382" height="200"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="V3F-tb-hKq"/>
@@ -73,7 +73,7 @@
                                         </cells>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ntj-wl-kye" userLabel="Keyboard Collection View">
-                                        <rect key="frame" x="0.0" y="250" width="382" height="568"/>
+                                        <rect key="frame" x="0.0" y="290" width="382" height="528"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="4" id="vpy-sz-seb">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -114,7 +114,6 @@
                                         </cells>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="vQ9-fE-9bG" secondAttribute="trailing" id="6LW-B1-4Vd"/>
                                     <constraint firstAttribute="trailing" secondItem="Ntj-wl-kye" secondAttribute="trailing" id="DXw-yf-RHd"/>
@@ -122,9 +121,7 @@
                                     <constraint firstItem="vQ9-fE-9bG" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="Pon-pk-eci"/>
                                     <constraint firstItem="Ntj-wl-kye" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="ZHp-XV-31h"/>
                                     <constraint firstItem="8O4-2h-7z4" firstAttribute="top" secondItem="0JI-ap-7n3" secondAttribute="top" id="g8z-HU-Mz7"/>
-                                    <constraint firstItem="Ntj-wl-kye" firstAttribute="top" secondItem="vQ9-fE-9bG" secondAttribute="bottom" id="ggu-1J-JUh"/>
                                     <constraint firstItem="8O4-2h-7z4" firstAttribute="leading" secondItem="0JI-ap-7n3" secondAttribute="leading" id="i1F-c8-reA"/>
-                                    <constraint firstItem="vQ9-fE-9bG" firstAttribute="top" secondItem="8O4-2h-7z4" secondAttribute="bottom" id="xKi-JR-sNE"/>
                                 </constraints>
                             </stackView>
                         </subviews>
