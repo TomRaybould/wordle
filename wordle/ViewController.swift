@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var wordleCollectionViewHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     @IBOutlet weak var wordleKeyboardCollectionView: UICollectionView!
     
@@ -30,9 +29,6 @@ class ViewController: UIViewController {
         
         wordleKeyboardCollectionView.dataSource = self
         wordleKeyboardCollectionView.delegate = self
-        
-        textInput.delegate = self
-        textInput.placeholder = "Guess a word..."
     }
     
     override func viewDidLayoutSubviews() {
@@ -169,17 +165,6 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     
 }
 
-
-
-extension ViewController : UITextFieldDelegate{
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        wordleMainViewModel.onWordEntered(newWord: textField.text)
-        textField.text = ""
-        return false
-    }
-    
-}
 
 extension ViewController : WordleMainViewDelegate{
     

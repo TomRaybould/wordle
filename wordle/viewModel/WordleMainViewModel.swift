@@ -71,7 +71,7 @@ class WordleMainViewModel{
             return
         }
         
-        if(letterCount >= 5){ return }
+        if(key.keyValue == nil || key.keyValue?.isEmpty == true || letterCount >= 5){ return }
         
         collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.getLetterItem(letterValue: key.keyValue ?? "", state: WordleCollectionItemState.notInWord)
         
@@ -161,7 +161,6 @@ class WordleMainViewModel{
         let flattenD2Array = collectionViewItemArray.flatMap({$0})
         self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: flattenD2Array)
     }
-    
 
     
     private func updateKeyboardView(){
