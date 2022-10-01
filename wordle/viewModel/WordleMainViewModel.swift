@@ -10,6 +10,8 @@ import Foundation
 protocol WordleMainViewDelegate{
     func displayTargetWord(targetWord: String)
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem])
+    func updateCollectionIndex(index: Int, wordleCollectionViewItem: WordleCollectionViewItem)
+    func updateCollectionRow(startIndex: Int, wordleCollectionViewItems: [WordleCollectionViewItem])
     func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem])
     func showError(errorString: String)
     func showSuccessDialog()
@@ -74,8 +76,11 @@ class WordleMainViewModel{
         
         if(key.keyValue == nil || key.keyValue?.isEmpty == true || letterCount >= 5){ return }
         
+        let index = getUiIndexForItem(offset: letterCount)
+        
         collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.getNewEntryItem(letterValue: key.keyValue!)
-        updateWordleCollectionViewData()
+        
+        wordleMainViewDelegate.updateCollectionIndex(index: index, wordleCollectionViewItem: WordleCollectionViewItem.getNewEntryItem(letterValue: key.keyValue!))
         
         letterCount += 1
         
@@ -86,8 +91,12 @@ class WordleMainViewModel{
         
         letterCount -= 1
         
-        collectionViewItemArray[wordsEnteredCount][letterCount] = WordleCollectionViewItem.emptyLetterItem()
-        updateWordleCollectionViewData()
+        let emptyLetter = WordleCollectionViewItem.emptyLetterItem()
+        collectionViewItemArray[wordsEnteredCount][letterCount] = emptyLetter
+        
+        let index = getUiIndexForItem(offset: letterCount)
+        
+        self.wordleMainViewDelegate.updateCollectionIndex(index: index, wordleCollectionViewItem: emptyLetter)
     }
     
     private func onEnterPressed(){
@@ -153,10 +162,12 @@ class WordleMainViewModel{
         
         //update UI
         collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray
+        addWordToUI(newWord: newWordLetterItemsArray)
+        updateKeyboardKeyColors()
+        
         wordsEnteredCount += 1
         letterCount = 0
-        updateWordleCollectionViewData()
-        updateKeyboardKeyColors()
+        
         
         //check for winner
         var isWinner = true
@@ -175,6 +186,17 @@ class WordleMainViewModel{
         }
 
     }
+    
+    //adds the word to the ui collectionView
+    private func addWordToUI(newWord: [WordleCollectionViewItem]){
+        let index = getUiIndexForItem(offset: 0)
+        self.wordleMainViewDelegate.updateCollectionRow(startIndex: index, wordleCollectionViewItems: newWord)
+    }
+    
+    private func getUiIndexForItem(offset: Int) -> Int{
+        return (wordsEnteredCount * 5) + offset
+    }
+    
     
     //updating the colors of the keys to show what letters are used in the word, and what letters are in the rigth position.
     private func updateKeyboardKeyColors(){
@@ -215,6 +237,7 @@ class WordleMainViewModel{
         return keyboardKeysArray.firstIndex{$0.keyValue == target } ?? -1
     }
     
+
     private func updateWordleCollectionViewData(){
         let flattenD2Array = collectionViewItemArray.flatMap({$0})
         self.wordleMainViewDelegate?.updateCollectionView(collectionViewArray: flattenD2Array)

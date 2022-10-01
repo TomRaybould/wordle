@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wordleMainViewModel = WordleMainViewModel(wordleMainViewDelegate: self, wordListProvider: WordList.instance)
-        wordleMainViewModel.initGame()
         wordleCollectionView.dataSource = self
         wordleCollectionView.delegate = self
         
@@ -39,10 +38,16 @@ class ViewController: UIViewController {
         wordleCollectionViewHeight.constant = screenHeight/2
         wordleCollectionViewWidth.constant = (screenHeight/2) * ratio
         
+        wordleMainViewModel.initGame()
     }
 }
 
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if(collectionView == wordleKeyboardCollectionView){return}
+        UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromBottom, animations: nil)
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -235,17 +240,28 @@ extension ViewController : WordleMainViewDelegate{
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {
         wordleCollectionViewCharArray = collectionViewArray
         wordleCollectionView.reloadData()
-        wordleCollectionView.invalidateIntrinsicContentSize()
-        wordleCollectionView.setNeedsLayout()
-        wordleCollectionView.layoutIfNeeded()
+    }
+    
+    func updateCollectionIndex(index: Int, wordleCollectionViewItem: WordleCollectionViewItem) {
+        wordleCollectionViewCharArray[index] = wordleCollectionViewItem
+        let indexPath = IndexPath(item: index, section: 0)
+        wordleCollectionView.reconfigureItems(at: [indexPath])
+    }
+    
+    func updateCollectionRow(startIndex: Int, wordleCollectionViewItems: [WordleCollectionViewItem]) {
+        for i in 0...4 {
+            let dispatchAfter = DispatchTimeInterval.milliseconds(i * 500)
+            DispatchQueue.main.asyncAfter(deadline: .now() + dispatchAfter) {
+                self.wordleCollectionViewCharArray[startIndex + i] = wordleCollectionViewItems[i]
+                let indexPath = IndexPath(item: startIndex + i, section: 0)
+                self.wordleCollectionView.reloadItems(at: [indexPath])
+            }
+        }
     }
     
     func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {
         wordleKeyboardArray = keyboardKeys
         wordleKeyboardCollectionView.reloadData()
-        wordleCollectionView.invalidateIntrinsicContentSize()
-        wordleCollectionView.setNeedsLayout()
-        wordleCollectionView.layoutIfNeeded()
     }
     
     

@@ -94,6 +94,26 @@ class wordleMainViewModelTests: XCTestCase {
     }
     
     class MockWordleMainViewDelegate : WordleMainViewDelegate {
+        func updateCollectionIndex(index: Int, wordleCollectionViewItem: WordleCollectionViewItem) {
+            
+        }
+        
+        func updateCollectionRow(startIndex: Int, wordleCollectionViewItems: [WordleCollectionViewItem]) {
+            
+        }
+        
+        func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {
+            
+        }
+        
+        func showSuccessDialog() {
+            
+        }
+        
+        func showFailureDialog(correctWord: String) {
+            
+        }
+        
         
         var lastErrorMessageGivenToView: String = ""
         var lastCollectionListGivenToView: [WordleCollectionViewItem] = Array()
