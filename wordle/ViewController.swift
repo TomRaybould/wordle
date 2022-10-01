@@ -169,7 +169,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         }else if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.enter ||
                  wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.backspace){
             
-            let totalPadding = 8 * spacingBetweenCells
+            let totalPadding = 11 * spacingBetweenCells
             let widthOfKeys = 7 * standardKeyWidth
             let spacerWidth = (collectionWidth - (totalPadding + widthOfKeys)) / 2
             
@@ -191,16 +191,46 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
 extension ViewController : WordleMainViewDelegate{
     
     func showError(errorString: String) {
-        let alert = UIAlertController(title: nil, message: errorString, preferredStyle: .alert)
-        alert.view.backgroundColor = UIColor.black
-        alert.view.alpha = 0.6
-        alert.view.layer.cornerRadius = 16
+        let alert = getAlert(title: nil, message: errorString)
         
         self.present(alert, animated: true)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             alert.dismiss(animated: true)
         })
+    }
+    
+    func showFailureDialog() {
+        let alert = getAlert(title: "You Lost :(", message: nil)
+        
+        let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) {_ in
+            self.wordleMainViewModel.initGame()
+        }
+        
+        alert.addAction(tryAgainAction)
+        
+        self.present(alert, animated: true)
+    }
+    
+    func showSuccessDialog() {
+        let alert = getAlert(title: "You Won!!!", message: nil)
+        
+        let playAgainAction = UIAlertAction(title: "Play Again", style: .default) {_ in
+            self.wordleMainViewModel.initGame()
+        }
+        
+        alert.addAction(playAgainAction)
+        
+        self.present(alert, animated: true)
+    
+    }
+    
+    func getAlert(title: String?, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.systemBackground
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 16
+        return alert
     }
     
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {

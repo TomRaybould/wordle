@@ -12,6 +12,8 @@ protocol WordleMainViewDelegate{
     func updateCollectionView(collectionViewArray: [WordleCollectionViewItem])
     func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem])
     func showError(errorString: String)
+    func showSuccessDialog()
+    func showFailureDialog()
 }
 
 protocol WordListProvider {
@@ -57,7 +59,6 @@ class WordleMainViewModel{
         }else{
             self.wordleMainViewDelegate?.showError(errorString: "Word must be 5 letters")
         }
-    
     }
     
     func onKeyPressedEntered(index: Int){
@@ -150,11 +151,25 @@ class WordleMainViewModel{
             }
         }
         
+        //update UI
         collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray
         wordsEnteredCount += 1
         letterCount = 0
         updateWordleCollectionViewData()
         updateKeyboardKeyColors()
+        
+        //check for winner
+        var isWinner = true
+        for letterItem in newWordLetterItemsArray{
+            if(letterItem.state != .rightPosition){
+                isWinner = false
+                break
+            }
+        }
+        
+        if(isWinner){
+            self.wordleMainViewDelegate.showSuccessDialog()
+        }
     }
     
     //updating the colors of the keys to show what letters are used in the word, and what letters are in the rigth position.
