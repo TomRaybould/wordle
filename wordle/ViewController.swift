@@ -118,7 +118,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
 
             cell.backgroundColor = backgroundColor ?? UIColor.darkGray
         }else{
-            cell.backgroundColor = UIColor.systemBackground
+            cell.backgroundColor = UIColor.clear
         }
         
         return cell
@@ -152,7 +152,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let numberOfItemsPerRow:CGFloat = 10
         let spacingBetweenCells:CGFloat = 4
         
-        let totalSpacing = (numberOfItemsPerRow * spacingBetweenCells)
+        let totalSpacing = (9 * spacingBetweenCells)
         //width calculated for the top row of keys with no spacers
         let standardKeyWidth = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         
@@ -161,7 +161,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         
         if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.spacer){
             //spacer items on the side of the second row of keys
-            let totalPadding = 12 * spacingBetweenCells
+            let totalPadding = 10 * spacingBetweenCells
             let widthOfKeys = 9 * standardKeyWidth
             let spacerWidth = (collectionWidth - (totalPadding + widthOfKeys)) / 2
             
@@ -169,7 +169,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         }else if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.enter ||
                  wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.backspace){
             
-            let totalPadding = 11 * spacingBetweenCells
+            let totalPadding = 8 * spacingBetweenCells
             let widthOfKeys = 7 * standardKeyWidth
             let spacerWidth = (collectionWidth - (totalPadding + widthOfKeys)) / 2
             
