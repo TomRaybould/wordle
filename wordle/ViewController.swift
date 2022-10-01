@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var wordleKeyboardArray:[WordleKeyboardItem] = Array()
     
     @IBOutlet weak var wordleCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var wordleCollectionViewWidth: NSLayoutConstraint!
     
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     @IBOutlet weak var wordleKeyboardCollectionView: UICollectionView!
@@ -29,17 +30,16 @@ class ViewController: UIViewController {
         
         wordleKeyboardCollectionView.dataSource = self
         wordleKeyboardCollectionView.delegate = self
+        
+        let screen = UIScreen.main.bounds
+        let screenHeight = screen.size.height
+        
+        // 5/6 is the ratio of blocks in the grid
+        let ratio = CGFloat(5.0/6.0)
+        wordleCollectionViewHeight.constant = screenHeight/2
+        wordleCollectionViewWidth.constant = (screenHeight/2) * ratio
+        
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let height = wordleCollectionView.collectionViewLayout.collectionViewContentSize.height
-        wordleCollectionViewHeight.constant = height
-        self.view.setNeedsLayout()
-    }
-    
-    
-    
 }
 
 extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -115,7 +115,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
                     return UIColor.lightGray
                 }
             }()
-
+            
             cell.backgroundColor = backgroundColor ?? UIColor.darkGray
         }else{
             cell.backgroundColor = UIColor.clear
@@ -131,18 +131,16 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         }
         
         
+        let collectionWidth = min(collectionView.bounds.width, collectionView.bounds.height)
+        
         let numberOfItemsPerRow:CGFloat = 5
         let spacingBetweenCells:CGFloat = 10
         
         let totalSpacing = ((numberOfItemsPerRow + 1) * spacingBetweenCells)
         
+        let width = (collectionWidth - totalSpacing)/numberOfItemsPerRow
+        return CGSize(width: width, height: width)
         
-        if let collection = self.wordleCollectionView{
-            let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
-            return CGSize(width: width, height: width)
-        }else{
-            return CGSize(width: 0, height: 0)
-        }
     }
     
     func getSizeCellForKeyboardCollectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, MinimumInteritemSpacingForSectionAt indexPath: IndexPath) -> CGSize {
@@ -183,7 +181,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(collectionView != wordleKeyboardCollectionView) {return}
         wordleMainViewModel.onKeyPressedEntered(index: indexPath.row)
-      }
+    }
     
 }
 
@@ -223,7 +221,7 @@ extension ViewController : WordleMainViewDelegate{
         alert.addAction(playAgainAction)
         
         self.present(alert, animated: true)
-    
+        
     }
     
     func getAlert(title: String?, message: String?) -> UIAlertController {
