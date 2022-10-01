@@ -200,8 +200,9 @@ extension ViewController : WordleMainViewDelegate{
         })
     }
     
-    func showFailureDialog() {
-        let alert = getAlert(title: "You Lost :(", message: nil)
+    func showFailureDialog(correctWord: String) {
+        let message = "The correct word was: " + correctWord
+        let alert = getAlert(title: "You Lost :(", message: message)
         
         let tryAgainAction = UIAlertAction(title: "Try Again", style: .default) {_ in
             self.wordleMainViewModel.initGame()

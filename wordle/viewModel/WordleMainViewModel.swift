@@ -13,7 +13,7 @@ protocol WordleMainViewDelegate{
     func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem])
     func showError(errorString: String)
     func showSuccessDialog()
-    func showFailureDialog()
+    func showFailureDialog(correctWord: String)
 }
 
 protocol WordListProvider {
@@ -169,7 +169,11 @@ class WordleMainViewModel{
         
         if(isWinner){
             self.wordleMainViewDelegate.showSuccessDialog()
+        }else if (wordsEnteredCount == 6){
+            //user has entered 6 words, no more tries
+            self.wordleMainViewDelegate.showFailureDialog(correctWord: self.targetWord)
         }
+
     }
     
     //updating the colors of the keys to show what letters are used in the word, and what letters are in the rigth position.
