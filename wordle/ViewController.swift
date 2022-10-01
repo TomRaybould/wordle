@@ -155,7 +155,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let standardKeyWidth = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         
         var itemWidth = standardKeyWidth
-        let itemHeight = standardKeyWidth * 1.5
+        let itemHeight = standardKeyWidth * 1.25
         
         if(wordleKeyboardArray[indexPath.row].state == WordleKeyboardItem.WordleKeyboardItemState.spacer){
             //spacer items on the side of the second row of keys
