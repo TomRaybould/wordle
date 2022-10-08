@@ -56,7 +56,7 @@ class WordleMainViewModel{
         updateWordleCollectionViewData()
     }
     
-    func onWordEntered(newWord: String?){
+    private func onWordEntered(newWord: String?){
         if let text = newWord?.uppercased(), text.count == 5{
             addNewWordToList(newWord: text)
         }else{
@@ -263,40 +263,40 @@ class WordleMainViewModel{
         keyboardKeysArray = Array()
         
         //line one
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Q", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "W", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "E", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "R", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "T", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Y", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "U", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "I", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "O", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "P", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Q", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//0
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "W", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//1
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "E", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//2
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "R", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//3
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "T", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//4
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Y", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//5
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "U", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//6
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "I", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//7
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "O", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//8
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "P", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//9
         
         //line two
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "A", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "S", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "D", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "F", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "G", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "H", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "J", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "K", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "L", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())
+        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())//10
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "A", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//11
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "S", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//12
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "D", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//13
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "F", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//14
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "G", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//15
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "H", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//16
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "J", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//17
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "K", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//18
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "L", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//19
+        keyboardKeysArray.append(WordleKeyboardItem.createSpacer())//20
         
         //line three
-        keyboardKeysArray.append(WordleKeyboardItem.createEnterKey())
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Z", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "X", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "C", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "V", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "B", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "N", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "M", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))
-        keyboardKeysArray.append(WordleKeyboardItem.createBackspaceKey())
+        keyboardKeysArray.append(WordleKeyboardItem.createEnterKey())//21
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "Z", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//22
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "X", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//23
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "C", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//24
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "V", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//25
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "B", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//26
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "N", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//27
+        keyboardKeysArray.append(WordleKeyboardItem.createKeyboardItem(keyValue: "M", state: WordleKeyboardItem.WordleKeyboardItemState.unusedLetter))//28
+        keyboardKeysArray.append(WordleKeyboardItem.createBackspaceKey())//29
         
         wordleMainViewDelegate.updateKeyboardKeys(keyboardKeys: keyboardKeysArray)
     }

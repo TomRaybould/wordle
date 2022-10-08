@@ -31,11 +31,18 @@ class wordleMainViewModelTests: XCTestCase {
         let viewModel = wordleMainViewModelTests.getViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
         viewModel.initGame()
         
-        //simulate user guessing BETTY
-        viewModel.onWordEntered(newWord: "BETTY")
+        //simulate user guessing BETTY, see indexs in comments next to keys array in viewmodel
+        viewModel.onKeyPressedEntered(index: 26)
+        viewModel.onKeyPressedEntered(index: 2)
+        viewModel.onKeyPressedEntered(index: 4)
+        viewModel.onKeyPressedEntered(index: 4)
+        viewModel.onKeyPressedEntered(index: 5)
+        
+        //enter key
+        viewModel.onKeyPressedEntered(index: 21)
         
         let collectionItems = wordleMainViewDelegate.lastCollectionListGivenToView
-            
+        
         XCTAssertEqual("T", collectionItems[2].letterValue)
         XCTAssertEqual(WordleCollectionItemState.rightPosition, collectionItems[2].state)
         XCTAssertEqual("T", collectionItems[3].letterValue)
@@ -50,14 +57,17 @@ class wordleMainViewModelTests: XCTestCase {
         let viewModel = wordleMainViewModelTests.getViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
         viewModel.initGame()
         
-        //simulate user guessing AMISS
-        viewModel.onWordEntered(newWord: "AMISS")
+        //simulate user guessing AMISS, see indexs in comments next to keys array in viewmodel
+        viewModel.onKeyPressedEntered(index: 11)
+        viewModel.onKeyPressedEntered(index: 28)
+        viewModel.onKeyPressedEntered(index: 7)
+        viewModel.onKeyPressedEntered(index: 12)
+        viewModel.onKeyPressedEntered(index: 12)
+        
+        //enter key
+        viewModel.onKeyPressedEntered(index: 21)
         
         let collectionItems = wordleMainViewDelegate.lastCollectionListGivenToView
-            
-        print(collectionItems.map({ word in
-            word.state
-        }))
         
         XCTAssertEqual("S", collectionItems[3].letterValue)
         XCTAssertEqual(WordleCollectionItemState.wrongPosition, collectionItems[3].state)
@@ -98,8 +108,9 @@ class wordleMainViewModelTests: XCTestCase {
             
         }
         
+        var lastCollectionListGivenToView: [WordleCollectionViewItem] = Array()
         func updateCollectionRow(startIndex: Int, wordleCollectionViewItems: [WordleCollectionViewItem]) {
-            
+            lastCollectionListGivenToView = wordleCollectionViewItems
         }
         
         func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {
@@ -116,14 +127,14 @@ class wordleMainViewModelTests: XCTestCase {
         
         
         var lastErrorMessageGivenToView: String = ""
-        var lastCollectionListGivenToView: [WordleCollectionViewItem] = Array()
         
         func displayTargetWord(targetWord: String) {}
         func showError(errorString: String) {
+            print(errorString)
             lastErrorMessageGivenToView = errorString
         }
         func updateCollectionView(collectionViewArray: [WordleCollectionViewItem]) {
-            lastCollectionListGivenToView = collectionViewArray
+
         }
 
     }
