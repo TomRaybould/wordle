@@ -160,16 +160,19 @@ class WordleMainViewModel{
             }
         }
         
+        isInputDisabled = true
+        
         //update UI
         collectionViewItemArray[wordsEnteredCount] = newWordLetterItemsArray
         addWordToUI(newWord: newWordLetterItemsArray)
-        updateKeyboardKeyColors()
-        
-        isInputDisabled = true
     }
     
     func onWordAnimationFinished(){
         if(letterCount < 5) {return}
+        
+        //update colors on keyboard
+        updateKeyboardKeyColors()
+        
         //check for winner
         var isWinner = true
         
@@ -185,7 +188,7 @@ class WordleMainViewModel{
         
         if(isWinner){
             self.wordleMainViewDelegate.showSuccessDialog()
-        }else if (wordsEnteredCount == 6){
+        }else if (wordsEnteredCount == 5){
             //user has entered 6 words, no more tries
             self.wordleMainViewDelegate.showFailureDialog(correctWord: self.targetWord)
         }else{
