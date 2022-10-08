@@ -156,7 +156,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let numberOfItemsPerRow:CGFloat = 5
         let spacingBetweenCells:CGFloat = 10
         
-        let totalSpacing = ((numberOfItemsPerRow) * spacingBetweenCells)
+        let totalSpacing = (numberOfItemsPerRow * spacingBetweenCells)
         
         let width = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         return CGSize(width: width, height: width)

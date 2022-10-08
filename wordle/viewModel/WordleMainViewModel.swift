@@ -106,7 +106,6 @@ class WordleMainViewModel{
                 newWord += item.letterValue ?? ""
             }
         }
-        print(newWord)
         onWordEntered(newWord: newWord)
     }
     
