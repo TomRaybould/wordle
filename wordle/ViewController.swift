@@ -46,7 +46,29 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if(collectionView == wordleKeyboardCollectionView){return}
-        UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromBottom, animations: nil)
+        
+        print("here 1" + indexPath.row.description)
+        
+        let w = cell.frame.width
+        let x = cell.frame.origin.x
+        let y = cell.frame.origin.y
+        
+        UIView.animate(withDuration: 0.5, //1
+            delay: 1.0, //
+            options: UIView.AnimationOptions.curveLinear, //5
+            animations: ({ //6
+                cell.frame = CGRect(x: x, y: y, width: 0, height: 0)
+        }), completion: {_ in
+            print("here 2" + indexPath.row.description)
+            UIView.animate(withDuration: 0.5, //1
+                delay: 0.0, //2
+                options: UIView.AnimationOptions.curveLinear, //5
+                animations: ({ //6
+                    cell.frame = CGRect(x: x, y: y, width: w, height: w)
+            }), completion: nil)
+        })
+        
+        
     }
     
     
@@ -141,7 +163,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         let numberOfItemsPerRow:CGFloat = 5
         let spacingBetweenCells:CGFloat = 10
         
-        let totalSpacing = ((numberOfItemsPerRow + 1) * spacingBetweenCells)
+        let totalSpacing = ((numberOfItemsPerRow) * spacingBetweenCells)
         
         let width = (collectionWidth - totalSpacing)/numberOfItemsPerRow
         return CGSize(width: width, height: width)
