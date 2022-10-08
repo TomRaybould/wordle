@@ -47,25 +47,18 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if(collectionView == wordleKeyboardCollectionView){return}
         
-        print("here 1" + indexPath.row.description)
-        
         let w = cell.frame.width
         let x = cell.frame.origin.x
         let y = cell.frame.origin.y
         
-        UIView.animate(withDuration: 0.5, //1
-            delay: 1.0, //
-            options: UIView.AnimationOptions.curveLinear, //5
-            animations: ({ //6
-                cell.frame = CGRect(x: x, y: y, width: 0, height: 0)
+        UIView.animate(withDuration: 0.5,
+            delay: 1.0,
+            options: UIView.AnimationOptions.curveLinear,
+            animations: ({
+                cell.frame = CGRect(x: x, y: y, width: w, height: w)
         }), completion: {_ in
-            print("here 2" + indexPath.row.description)
-            UIView.animate(withDuration: 0.5, //1
-                delay: 0.0, //2
-                options: UIView.AnimationOptions.curveLinear, //5
-                animations: ({ //6
-                    cell.frame = CGRect(x: x, y: y, width: w, height: w)
-            }), completion: nil)
+            //not sure why this needs to be wrapping in another animation, but if it is removed, the first cell does not animate properly
+            UIView.transition(with: cell, duration: 0.5, options: .transitionFlipFromBottom, animations: nil)
         })
         
         
