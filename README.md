@@ -2,15 +2,21 @@
 
 Learning iOS through trying to recreate wordle in a native iOS app.
 
-<img src="./wordle.gif" width="400">
+Main takeaways from this project:
+- Swift/xCode
+- UICollection views(sizing and scaling items)
+- Storyboards
+- Unit test
+- Some animation logic
 
 
-## Error Messages
+<img src="./success.gif" width="300">
 
-Less then 5 letters
+## Losing example
+<img src="./fail.gif" width="300">
 
-<img src="./less_than_five_letters_error.gif" width="400">
+## Dark Mode
+<img src="./dark_mode.gif" width="300">
 
-Word not in list
-
-<img src="./word_not_in_list_error.gif" width="400">
+## Error handling
+<img src="./error_handling.gif" width="300">
