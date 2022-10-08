@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var wordleCollectionView: UICollectionView!
     @IBOutlet weak var wordleKeyboardCollectionView: UICollectionView!
     
+    var disableInput = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -271,7 +272,16 @@ extension ViewController : WordleMainViewDelegate{
                 let indexPath = IndexPath(item: startIndex + i, section: 0)
                 self.wordleCollectionView.reloadItems(at: [indexPath])
             }
+            
+            if(i == 4){
+                let dispatchAfter = DispatchTimeInterval.milliseconds(5 * 500)
+                DispatchQueue.main.asyncAfter(deadline: .now() + dispatchAfter) {
+                    //tell the viewmodel the word animation is finished and a new word can be played or the winning/losing state can be shown
+                    self.wordleMainViewModel.onWordAnimationFinished()
+                }
+            }
         }
+        
     }
     
     func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {

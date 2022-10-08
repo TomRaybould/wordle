@@ -32,6 +32,7 @@ class WordleMainViewModel{
     private var keyboardKeysArray:[WordleKeyboardItem] = Array()
     private var wordsEnteredCount = 0
     private var letterCount = 0
+    private var isInputDisabled = false
 
     
     init(wordleMainViewDelegate: WordleMainViewDelegate, wordListProvider: WordListProvider){
@@ -164,12 +165,17 @@ class WordleMainViewModel{
         addWordToUI(newWord: newWordLetterItemsArray)
         updateKeyboardKeyColors()
         
-        wordsEnteredCount += 1
-        letterCount = 0
-        
-        
+        isInputDisabled = true
+    }
+    
+    func onWordAnimationFinished(){
+        if(letterCount < 5) {return}
         //check for winner
         var isWinner = true
+        
+        //get last word
+        let newWordLetterItemsArray = collectionViewItemArray[wordsEnteredCount]
+    
         for letterItem in newWordLetterItemsArray{
             if(letterItem.state != .rightPosition){
                 isWinner = false
@@ -182,8 +188,13 @@ class WordleMainViewModel{
         }else if (wordsEnteredCount == 6){
             //user has entered 6 words, no more tries
             self.wordleMainViewDelegate.showFailureDialog(correctWord: self.targetWord)
+        }else{
+            //update counters
+            wordsEnteredCount += 1
+            letterCount = 0
+            isInputDisabled = false
         }
-
+        
     }
     
     //adds the word to the ui collectionView
