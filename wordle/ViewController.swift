@@ -148,7 +148,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if(collectionView == wordleKeyboardCollectionView){
-            return getSizeCellForKeyboardCollectionView(_: collectionView, layout: collectionViewLayout, MinimumInteritemSpacingForSectionAt:indexPath)
+            return getSizeCellForKeyboardCollectionView(_: collectionView, layout: collectionViewLayout, indexPath: indexPath)
         }
         
         
@@ -164,7 +164,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
         
     }
     
-    func getSizeCellForKeyboardCollectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, MinimumInteritemSpacingForSectionAt indexPath: IndexPath) -> CGSize {
+    func getSizeCellForKeyboardCollectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath indexPath: IndexPath) -> CGSize {
         
         let collectionWidth = self.wordleKeyboardCollectionView.bounds.width
         
