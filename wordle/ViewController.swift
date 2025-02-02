@@ -166,7 +166,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
     
     func getSizeCellForKeyboardCollectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, indexPath indexPath: IndexPath) -> CGSize {
         
-        let collectionWidth = self.wordleKeyboardCollectionView.bounds.width
+        let collectionWidth = collectionView.bounds.width
         
         let numberOfItemsPerRow:CGFloat = 10
         let spacingBetweenCells:CGFloat = 4
