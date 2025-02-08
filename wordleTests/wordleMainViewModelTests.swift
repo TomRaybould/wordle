@@ -29,6 +29,8 @@ class wordleMainViewModelTests: XCTestCase {
         let wordListProvider = wordleMainViewModelTests.getWordListProvider(validGeussWordList: ["BETTY"], solutionWordList: ["WATER"])
         
         let viewModel = wordleMainViewModelTests.getViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
+        wordleMainViewDelegate.viewModel = viewModel
+       
         viewModel.initGame()
         
         //simulate user guessing BETTY, see indexs in comments next to keys array in viewmodel
@@ -55,6 +57,8 @@ class wordleMainViewModelTests: XCTestCase {
         let wordListProvider = wordleMainViewModelTests.getWordListProvider(validGeussWordList: ["AMISS"], solutionWordList: ["SANDY"])
         
         let viewModel = wordleMainViewModelTests.getViewModel(wordleMainViewDelegate: wordleMainViewDelegate, wordListProvider: wordListProvider)
+        wordleMainViewDelegate.viewModel = viewModel
+        
         viewModel.initGame()
         
         //simulate user guessing AMISS, see indexs in comments next to keys array in viewmodel
@@ -68,11 +72,29 @@ class wordleMainViewModelTests: XCTestCase {
         viewModel.onKeyPressedEntered(index: 21)
         
         let collectionItems = wordleMainViewDelegate.lastCollectionListGivenToView
-        
+            
+        //asserts for letters in the main collection view
         XCTAssertEqual("S", collectionItems[3].letterValue)
         XCTAssertEqual(WordleCollectionItemState.wrongPosition, collectionItems[3].state)
         XCTAssertEqual("S", collectionItems[4].letterValue)
         XCTAssertEqual(WordleCollectionItemState.notInWord, collectionItems[4].state)
+        
+        
+        //asserts for letters in keyboard collection view
+        let keyboardKeys = wordleMainViewDelegate.lastKeyboardCollectionListGivenToView
+    
+        XCTAssertEqual("A", keyboardKeys[11].keyValue)
+        XCTAssertEqual(WordleKeyboardItem.WordleKeyboardItemState.wrongPosition, keyboardKeys[11].state)
+        
+        XCTAssertEqual("M", keyboardKeys[28].keyValue)
+        XCTAssertEqual(WordleKeyboardItem.WordleKeyboardItemState.notInWord, keyboardKeys[28].state)
+        
+        XCTAssertEqual("I", keyboardKeys[7].keyValue)
+        XCTAssertEqual(WordleKeyboardItem.WordleKeyboardItemState.notInWord, keyboardKeys[7].state)
+        
+        XCTAssertEqual("S", keyboardKeys[12].keyValue)
+        XCTAssertEqual(WordleKeyboardItem.WordleKeyboardItemState.wrongPosition, keyboardKeys[12].state)
+        
     }
     
     //Setting up Mock utils for viewmodel
@@ -103,18 +125,26 @@ class wordleMainViewModelTests: XCTestCase {
         return MockWordListProvider(validGeussWordList: validGeussWordList, solutionWordList: solutionWordList)
     }
     
+    
+    
     class MockWordleMainViewDelegate : WordleMainViewDelegate {
+        var viewModel: WordleMainViewModel! = nil
+        var lastCollectionListGivenToView: [WordleCollectionViewItem] = Array()
+        var lastKeyboardCollectionListGivenToView: [WordleKeyboardItem] = Array()
+    
+        
         func updateCollectionIndex(index: Int, wordleCollectionViewItem: WordleCollectionViewItem) {
             
         }
         
-        var lastCollectionListGivenToView: [WordleCollectionViewItem] = Array()
         func updateCollectionRow(startIndex: Int, wordleCollectionViewItems: [WordleCollectionViewItem]) {
             lastCollectionListGivenToView = wordleCollectionViewItems
+            viewModel.onWordAnimationFinished()
         }
         
+        
         func updateKeyboardKeys(keyboardKeys: [WordleKeyboardItem]) {
-            
+            lastKeyboardCollectionListGivenToView = keyboardKeys
         }
         
         func showSuccessDialog() {
