@@ -97,7 +97,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
             case WordleCollectionItemState.notInWord:
                 return UIColor(named: "NotInWordColor")
             default:
-                return UIColor.systemBackground
+                return UIColor(named: "DefaultLetterBackground")
             }
         }()
         
@@ -133,7 +133,7 @@ extension ViewController : UICollectionViewDataSource, UICollectionViewDelegateF
                 case WordleKeyboardItem.WordleKeyboardItemState.notInWord:
                     return UIColor(named: "NotInWordColor")
                 default:
-                    return UIColor.lightGray
+                    return UIColor(named: "DefaultKeyBackground")
                 }
             }()
             
