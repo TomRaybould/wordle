@@ -10,13 +10,13 @@ Main takeaways from this project:
 - Some animation logic
 
 
-<img src="./success.gif" width="300">
+<img src="./success1.gif" width="300">
 
 ## Losing example
-<img src="./fail.gif" width="300">
+<img src="./fail1.gif" width="300">
 
 ## Dark Mode
-<img src="./dark_mode.gif" width="300">
+<img src="./dark_mode1.gif" width="300">
 
 ## Error handling
-<img src="./error_handling.gif" width="300">
+<img src="./error_handling1.gif" width="300">
