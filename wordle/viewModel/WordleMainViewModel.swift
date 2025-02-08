@@ -220,8 +220,8 @@ class WordleMainViewModel{
             if(wordleCellItem.state == WordleCollectionItemState.notInWord){
                 
                 let key = keyboardKeysArray[index]
-                //check if this key is not also already used in the correct position
-                if(key.state != .correctPosition){
+                //check if this key is not also already used
+                if(key.state != .correctPosition && key.state != .wrongPosition){
                     keyboardKeysArray[index] = WordleKeyboardItem.createKeyboardItem(keyValue: key.keyValue ?? "", state: .notInWord)
                 }
                 
